@@ -82,12 +82,16 @@ def sample_leads():
     monthly_data = LeadSample.get_monthly_leads()
     company_size_data = LeadSample.get_company_size_distribution()
     
+    # Get lead categories from the enhanced model
+    lead_categories = LeadSample.get_lead_categories()
+    
     return render_template(
         'sample_leads.html',
         industry_data=industry_data,
         quality_data=quality_data,
         monthly_data=monthly_data,
-        company_size_data=company_size_data
+        company_size_data=company_size_data,
+        lead_categories=lead_categories
     )
 
 @app.errorhandler(404)

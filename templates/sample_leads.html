@@ -93,7 +93,57 @@
     </div>
 </section>
 
-<!-- Sample Data Table Section -->
+<!-- Lead Categories Section -->
+<section class="lead-categories py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Specialized Lead Categories</h2>
+                <p class="mb-5">Explore our comprehensive range of industry-specific lead categories designed to meet your exact business needs.</p>
+            </div>
+        </div>
+        
+        <!-- Category cards with enhanced animations -->
+        <div class="row">
+            {% for category in lead_categories %}
+            <div class="col-lg-4 col-md-6 mb-4 category-card-container">
+                <div class="card border-0 shadow-sm h-100 category-card">
+                    <div class="card-body p-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas {{ category.icon }} fa-2x"></i>
+                        </div>
+                        <h3 class="category-title">{{ category.name }}</h3>
+                        <p class="category-description">{{ category.description }}</p>
+                        
+                        <!-- Subcategories with badges -->
+                        <div class="subcategories mb-3">
+                            {% for subcategory in category.subcategories %}
+                            <span class="badge subcategory-badge mb-1 me-1">{{ subcategory }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Typical fields section -->
+                        {% if category.typical_fields %}
+                        <div class="typical-fields">
+                            <h5 class="typical-fields-title">Typical Fields</h5>
+                            <ul class="typical-fields-list">
+                                {% for field in category.typical_fields %}
+                                <li>{{ field }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        
+                        <a href="{{ url_for('contact') }}?service_interest=data_mining" class="btn btn-outline-primary category-btn mt-3">Request Leads</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Sample Data Table Section with enhanced animations -->
 <section class="sample-data-table py-5">
     <div class="container">
         <div class="row">
@@ -104,7 +154,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm table-card">
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
@@ -118,49 +168,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>Chief Technology Officer</td>
                                         <td>Technology</td>
                                         <td>201-500</td>
                                         <td>San Francisco, CA</td>
                                         <td><span class="badge bg-success">Verified</span></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>Marketing Director</td>
                                         <td>Healthcare</td>
                                         <td>501-1000</td>
                                         <td>Boston, MA</td>
                                         <td><span class="badge bg-success">Verified</span></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>VP of Operations</td>
                                         <td>Manufacturing</td>
                                         <td>1000+</td>
                                         <td>Chicago, IL</td>
                                         <td><span class="badge bg-success">Verified</span></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>Procurement Manager</td>
                                         <td>Retail</td>
                                         <td>51-200</td>
                                         <td>Atlanta, GA</td>
                                         <td><span class="badge bg-success">Verified</span></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>Chief Financial Officer</td>
                                         <td>Finance</td>
                                         <td>201-500</td>
                                         <td>New York, NY</td>
                                         <td><span class="badge bg-success">Verified</span></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>Human Resources Director</td>
                                         <td>Education</td>
                                         <td>501-1000</td>
                                         <td>Austin, TX</td>
                                         <td><span class="badge bg-success">Verified</span></td>
                                     </tr>
-                                    <tr>
+                                    <tr class="table-row">
                                         <td>IT Manager</td>
                                         <td>Technology</td>
                                         <td>51-200</td>

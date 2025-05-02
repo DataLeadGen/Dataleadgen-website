@@ -1,0 +1,71 @@
+{
+  "categories": [
+    {
+      "name": "Influencers",
+      "subcategories": [
+        "Fitness Influencers USA",
+        "Animal influencers",
+        "Business Influencer Canada",
+        "Gaming Influencer USA",
+        "Influencers/Blogger",
+        "Health Coach"
+      ],
+      "icon": "fa-users",
+      "description": "Connect with influential content creators, bloggers, and social media personalities to amplify your brand message.",
+      "typical_fields": ["Name", "Social Platforms", "Follower Count", "Engagement Rate", "Content Focus", "Contact Information"]
+    },
+    {
+      "name": "Non-Profit & Aged Care",
+      "subcategories": [
+        "Non Profit Organization",
+        "Aged Care"
+      ],
+      "icon": "fa-hand-holding-heart",
+      "description": "High-quality lead data for non-profit organizations and aged care facilities to support your outreach efforts.",
+      "typical_fields": ["Organization Name", "Mission Focus", "Annual Budget", "Key Decision Makers", "Location", "Contact Information"]
+    },
+    {
+      "name": "Real Estate",
+      "subcategories": [
+        "Real Estate Agent USA",
+        "Real Estate Brokers USA",
+        "Real Estate Investors USA"
+      ],
+      "icon": "fa-home",
+      "description": "Premium leads for real estate professionals, brokers, and investors to help expand your network and opportunities.",
+      "typical_fields": ["Name", "License Number", "Agency", "Property Types", "Transaction Volume", "Location", "Contact Information"]
+    },
+    {
+      "name": "Fitness Industry",
+      "subcategories": [
+        "Online Fitness Trainer USA",
+        "Gym Businesses"
+      ],
+      "icon": "fa-dumbbell",
+      "description": "Qualified leads for fitness professionals and gym businesses looking to expand their client base.",
+      "typical_fields": ["Business Name", "Specialization", "Client Volume", "Services Offered", "Location", "Contact Information"]
+    },
+    {
+      "name": "Construction",
+      "subcategories": [
+        "Construction Companies",
+        "Contractors",
+        "Construction Suppliers"
+      ],
+      "icon": "fa-hard-hat",
+      "description": "Targeted leads for the construction industry to help grow your business network and client base.",
+      "typical_fields": ["Company Name", "Specialization", "Project Scale", "Service Area", "License Information", "Contact Information"]
+    },
+    {
+      "name": "B2B Services",
+      "subcategories": [
+        "Technology Companies",
+        "Marketing Agencies",
+        "Professional Services"
+      ],
+      "icon": "fa-briefcase",
+      "description": "Quality B2B leads for businesses looking to expand their corporate client network.",
+      "typical_fields": ["Company Name", "Industry", "Company Size", "Decision Makers", "Technologies Used", "Contact Information"]
+    }
+  ]
+}

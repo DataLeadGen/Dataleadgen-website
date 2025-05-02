@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize form validation
     initFormValidation();
+    
+    // Initialize hover effects for special elements
+    initHoverEffects();
 });
 
 // Function to initialize animations
@@ -39,6 +42,78 @@ function initAnimations() {
             setTimeout(() => {
                 card.classList.add('slide-up');
             }, 200 * index);
+        });
+    }
+    
+    // Add animations to category cards with delay
+    const categoryCards = document.querySelectorAll('.category-card');
+    if (categoryCards.length > 0) {
+        categoryCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            setTimeout(() => {
+                card.classList.add('slide-up');
+                // Add a subtle pulse to the icon
+                const icon = card.querySelector('.category-icon');
+                if (icon) {
+                    icon.classList.add('pulse');
+                }
+            }, 200 * index);
+        });
+    }
+    
+    // Add animations to table rows
+    const tableRows = document.querySelectorAll('.table-row');
+    if (tableRows.length > 0) {
+        tableRows.forEach((row, index) => {
+            row.style.opacity = '0';
+            setTimeout(() => {
+                row.style.opacity = '1';
+                row.style.transform = 'translateX(0)';
+            }, 100 * index);
+        });
+    }
+    
+    // Add float animation to specific elements
+    const floatElements = document.querySelectorAll('.testimonial-card, .lead-card');
+    if (floatElements.length > 0) {
+        floatElements.forEach((el) => {
+            el.classList.add('float');
+        });
+    }
+}
+
+// Function to initialize hover effects
+function initHoverEffects() {
+    // Add hover effects to subcategory badges
+    const subcategoryBadges = document.querySelectorAll('.subcategory-badge');
+    if (subcategoryBadges.length > 0) {
+        subcategoryBadges.forEach((badge) => {
+            badge.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            badge.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    }
+    
+    // Add hover effects to category cards
+    const categoryCards = document.querySelectorAll('.category-card');
+    if (categoryCards.length > 0) {
+        categoryCards.forEach((card) => {
+            card.addEventListener('mouseenter', function() {
+                // Add subtle rotation to the icon within the card
+                const icon = this.querySelector('.category-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(15deg) scale(1.2)';
+                }
+            });
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.category-icon');
+                if (icon) {
+                    icon.style.transform = '';
+                }
+            });
         });
     }
 }
