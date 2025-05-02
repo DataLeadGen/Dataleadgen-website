@@ -84,15 +84,64 @@ function initAnimations() {
 
 // Function to initialize hover effects
 function initHoverEffects() {
-    // Add hover effects to subcategory badges
-    const subcategoryBadges = document.querySelectorAll('.subcategory-badge');
-    if (subcategoryBadges.length > 0) {
-        subcategoryBadges.forEach((badge) => {
-            badge.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.1)';
+    // Add hover effects to subcategory badges with link behavior
+    const subcategoryBadgeLinks = document.querySelectorAll('.subcategory-badge-link');
+    if (subcategoryBadgeLinks.length > 0) {
+        subcategoryBadgeLinks.forEach((link) => {
+            const badge = link.querySelector('.subcategory-badge');
+            
+            link.addEventListener('mouseenter', function() {
+                if (badge) {
+                    badge.style.transform = 'scale(1.1)';
+                    badge.style.backgroundColor = '#0056b3';
+                    badge.style.color = 'white';
+                }
             });
-            badge.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
+            
+            link.addEventListener('mouseleave', function() {
+                if (badge) {
+                    badge.style.transform = 'scale(1)';
+                    badge.style.backgroundColor = '';
+                    badge.style.color = '';
+                }
+            });
+            
+            // Add click animation
+            link.addEventListener('click', function() {
+                if (badge) {
+                    badge.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        badge.style.transform = 'scale(1.1)';
+                    }, 100);
+                }
+            });
+        });
+    }
+    
+    // Add hover and click effects to view sheet button
+    const viewSheetBtns = document.querySelectorAll('.view-sheet-btn');
+    if (viewSheetBtns.length > 0) {
+        viewSheetBtns.forEach((btn) => {
+            const icon = btn.querySelector('i');
+            
+            btn.addEventListener('mouseenter', function() {
+                if (icon) {
+                    icon.style.transform = 'translateX(3px)';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                if (icon) {
+                    icon.style.transform = 'translateX(0)';
+                }
+            });
+            
+            // Add click animation
+            btn.addEventListener('click', function() {
+                this.style.transform = 'translateY(2px)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-2px)';
+                }, 100);
             });
         });
     }

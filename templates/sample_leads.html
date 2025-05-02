@@ -115,10 +115,12 @@
                         <h3 class="category-title">{{ category.name }}</h3>
                         <p class="category-description">{{ category.description }}</p>
                         
-                        <!-- Subcategories with badges -->
+                        <!-- Subcategories with clickable badges linking to Google Sheets -->
                         <div class="subcategories mb-3">
                             {% for subcategory in category.subcategories %}
-                            <span class="badge subcategory-badge mb-1 me-1">{{ subcategory }}</span>
+                            <a href="{{ subcategory.sheet_url }}" target="_blank" class="subcategory-badge-link">
+                                <span class="badge subcategory-badge mb-1 me-1">{{ subcategory.name }}</span>
+                            </a>
                             {% endfor %}
                         </div>
                         
@@ -134,7 +136,12 @@
                         </div>
                         {% endif %}
                         
-                        <a href="{{ url_for('contact') }}?service_interest=data_mining" class="btn btn-outline-primary category-btn mt-3">Request Leads</a>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <a href="{{ category.main_sheet_url }}" target="_blank" class="btn btn-outline-secondary view-sheet-btn">
+                                <i class="fas fa-table me-1"></i> View Main Sheet
+                            </a>
+                            <a href="{{ url_for('contact') }}?service_interest=data_mining" class="btn btn-outline-primary category-btn">Request Leads</a>
+                        </div>
                     </div>
                 </div>
             </div>
