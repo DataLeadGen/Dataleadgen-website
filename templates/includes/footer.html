@@ -1,0 +1,80 @@
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="footer-brand mb-4">
+                    <h3>
+                        <i class="fas fa-database me-2"></i>
+                        Data Lead Gen
+                    </h3>
+                </div>
+                <p>
+                    Founded in {{ company_founded }} by {{ company_founder }}, Data Lead Generation is a leading provider of B2B data solutions.
+                    We help businesses connect with their ideal clients through accurate, reliable, and actionable data.
+                </p>
+                <div class="footer-contact">
+                    <p><i class="fas fa-envelope"></i> {{ company_email }}</p>
+                    <p><i class="fas fa-phone"></i> {{ company_phone }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ company_address }}</p>
+                </div>
+                <ul class="footer-social">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                <div class="footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li><a href="{{ url_for('services') }}">Services</a></li>
+                        <li><a href="{{ url_for('sample_leads') }}">Sample Leads</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="footer-links">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li><a href="{{ url_for('services') }}#data-mining">Data Mining</a></li>
+                        <li><a href="{{ url_for('services') }}#email-list">Email List Building</a></li>
+                        <li><a href="{{ url_for('services') }}#data-cleansing">Data Cleansing</a></li>
+                        <li><a href="{{ url_for('services') }}#data-scraping">Data Scraping</a></li>
+                        <li><a href="{{ url_for('services') }}#email-verification">Email Verification</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-links">
+                    <h5>Subscribe Newsletter</h5>
+                    <p>Subscribe to our newsletter to receive the latest updates on our services and offers.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-md-0">© {{ company_founded }}-2025 {{ company_name }}. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white me-3">Privacy Policy</a>
+                    <a href="#" class="text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

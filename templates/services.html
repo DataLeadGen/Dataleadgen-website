@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Services - Data Lead Generation{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Services</li>
+            </ol>
+        </nav>
+        <h1 class="mb-0">Our Services</h1>
+    </div>
+</div>
+
+<!-- Services Header Section -->
+<section class="services-header py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1480944657103-7fed22359e1d" alt="Data Analytics" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title">Comprehensive B2B Data Solutions</h2>
+                <p class="lead">We offer a wide range of data services to help businesses connect with their ideal clients and drive growth.</p>
+                <p>Our services support your outreach efforts through cold calling, email marketing, and LinkedIn prospecting, helping you connect with potential clients effectively and efficiently.</p>
+                <p>Many clients achieve faster results through our high-quality data, enabling more effective cold calling, a proven method for setting appointments and building connections.</p>
+                <div class="mt-4">
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary">Request a Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services List Section -->
+<section class="services bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Our Specialized Services</h2>
+                <p class="mb-5">Discover how our data services can transform your lead generation and business growth.</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="{{ service.icon }}"></i>
+                    </div>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Our Data Acquisition Process</h2>
+                <p class="mb-5">How we ensure you receive the highest quality data for your business needs.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary text-white mx-auto mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">1</div>
+                        <h4>Requirement Analysis</h4>
+                        <p>We thoroughly understand your specific needs, target audience, and business goals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary text-white mx-auto mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">2</div>
+                        <h4>Data Collection</h4>
+                        <p>We use advanced tools and methods to gather relevant data from multiple trusted sources.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary text-white mx-auto mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">3</div>
+                        <h4>Verification & Cleaning</h4>
+                        <p>Our team thoroughly verifies and cleans the data to ensure accuracy and quality.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary text-white mx-auto mb-4" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">4</div>
+                        <h4>Delivery & Support</h4>
+                        <p>We deliver the data in your preferred format with ongoing support as needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
+                <img src="https://images.unsplash.com/photo-1584291527935-456e8e2dd734" alt="Data Visualization" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="section-title">Benefits of Our Services</h2>
+                <div class="mt-4">
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-bullseye fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Targeted Outreach</h4>
+                            <p>Reach decision-makers at companies that match your ideal customer profile, increasing your conversion rates.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Improved ROI</h4>
+                            <p>Reduce wasted resources by focusing your sales and marketing efforts on qualified prospects.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-tachometer-alt fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Accelerated Growth</h4>
+                            <p>Scale your outreach efforts quickly with a constant flow of high-quality leads.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-clock fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Time Efficiency</h4>
+                            <p>Save valuable time by eliminating the need for manual lead research and data verification.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Flexible Pricing Options</h2>
+                <p class="mb-5">We offer customized pricing based on your specific requirements and data volume.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-5">
+                        <h3 class="text-center mb-4">Standard Package</h3>
+                        <div class="text-center mb-4">
+                            <span class="h3">Custom Pricing</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Basic data fields</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Email verification</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Standard delivery time</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Basic support</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="{{ url_for('contact') }}" class="btn btn-outline-primary">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow h-100" style="border-top: 5px solid var(--primary-color) !important;">
+                    <div class="card-body p-5">
+                        <h3 class="text-center mb-4">Premium Package</h3>
+                        <div class="text-center mb-4">
+                            <span class="h3">Custom Pricing</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Advanced data fields</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Enhanced verification</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Expedited delivery</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Priority support</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Data enrichment</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="{{ url_for('contact') }}" class="btn btn-primary">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-5">
+                        <h3 class="text-center mb-4">Enterprise Package</h3>
+                        <div class="text-center mb-4">
+                            <span class="h3">Custom Pricing</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Comprehensive data fields</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Advanced verification</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Custom delivery schedule</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Dedicated account manager</li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> Advanced data enrichment</li>
+                        </ul>
+                        <div class="text-center">
+                            <a href="{{ url_for('contact') }}" class="btn btn-outline-primary">Get a Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-primary text-white p-5 rounded shadow">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <h2 class="mb-3">Have questions about our services?</h2>
+                            <p class="lead mb-0">Our team is ready to discuss your specific requirements and how we can help.</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

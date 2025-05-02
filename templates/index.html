@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+
+{% block title %}Data Lead Generation - B2B Lead Generation Services{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1>Drive Business Growth with <span class="text-primary">Quality Lead Data</span></h1>
+                <p>Connect with your ideal clients through accurate, reliable, and actionable B2B data solutions tailored to your business needs.</p>
+                <div class="d-flex">
+                    <a href="{{ url_for('contact') }}" class="btn btn-primary me-3">Get Started</a>
+                    <a href="{{ url_for('services') }}" class="btn btn-outline-primary">Explore Services</a>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85" alt="Business Data Analytics" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h2 class="section-title text-center">Why Choose Data Lead Gen?</h2>
+                <p class="mb-5">We provide high-quality B2B data services to help you reach your target audience effectively.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>100% Accuracy</h3>
+                    <p>We pride ourselves on providing verified and accurate data with regular updates to ensure maximum deliverability.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Get your customized lead lists quickly with our efficient data mining and processing systems.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Expert Team</h3>
+                    <p>Our team of 10 skilled professionals ensures precision and quality in every project we undertake.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview Section -->
+<section class="services-overview bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Our Specialized Services</h2>
+                <p class="mb-5">We offer a comprehensive range of data services to help businesses grow and connect with potential clients.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                            <i class="fas fa-database fa-4x text-primary"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Data Mining & List Building</h5>
+                                <p class="card-text">Extract valuable business insights and create targeted contact lists for your marketing campaigns.</p>
+                                <a href="{{ url_for('services') }}" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                            <i class="fas fa-envelope-open-text fa-4x text-primary"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Email Verification & Cleaning</h5>
+                                <p class="card-text">Ensure high deliverability rates with our advanced email verification and list cleaning services.</p>
+                                <a href="{{ url_for('services') }}" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                            <i class="fas fa-code fa-4x text-primary"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Web & Data Scraping</h5>
+                                <p class="card-text">Extract valuable data from websites, Google Maps, and other online sources for your business needs.</p>
+                                <a href="{{ url_for('services') }}" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center p-3">
+                            <i class="fas fa-sync-alt fa-4x text-primary"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">CRM Data Upgrading</h5>
+                                <p class="card-text">Enhance your CRM with accurate and up-to-date information to improve your sales process.</p>
+                                <a href="{{ url_for('services') }}" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ url_for('services') }}" class="btn btn-primary">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Overview Section -->
+<section class="about-overview py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1463620695885-8a91d87c53d0" alt="Modern Office Workspace" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title">About Data Lead Gen</h2>
+                <p>Founded in 2019 by Zakir Hussain, Data Lead Generation is a leading provider of B2B data solutions. Under Zakir's visionary leadership, we help businesses connect with their ideal clients through accurate, reliable, and actionable data.</p>
+                <p>With a team of 10 skilled professionals, including 8 core team members, we guarantee precision and quality in every project.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Expert leadership and experienced team</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Cutting-edge technologies and advanced tools</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> 100% updated data and verified emails</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Proven results and satisfied clients</li>
+                </ul>
+                <a href="{{ url_for('about') }}" class="btn btn-primary mt-3">Learn More About Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Data Visualization Section -->
+<section class="data-visualization bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Data-Driven Insights</h2>
+                <p class="mb-5">Our lead generation solutions are backed by data analytics and industry insights.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">Lead Quality Distribution</h4>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Data Visualization" class="img-fluid rounded mb-3">
+                        <p class="card-text">Our rigorous verification process ensures that you only receive high-quality leads that match your target criteria.</p>
+                        <a href="{{ url_for('sample_leads') }}" class="btn btn-outline-primary">View Sample Data</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">Industry Trend Analysis</h4>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt="Data Visualization" class="img-fluid rounded mb-3">
+                        <p class="card-text">We stay ahead of industry trends to provide you with the most relevant and valuable lead data for your business.</p>
+                        <a href="{{ url_for('sample_leads') }}" class="btn btn-outline-primary">View Sample Data</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-primary text-white p-5 rounded shadow">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <h2 class="mb-3">Ready to grow your business with quality leads?</h2>
+                            <p class="lead mb-0">Let's schedule a 15-minute consultation to discuss how we can help drive your growth.</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Contact Us Today</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

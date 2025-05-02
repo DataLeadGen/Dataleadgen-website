@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - Data Lead Generation{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+            </ol>
+        </nav>
+        <h1 class="mb-0">About Us</h1>
+    </div>
+</div>
+
+<!-- About Header Section -->
+<section class="about-header py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf" alt="Data Lead Generation Team" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="section-title">Our Story</h2>
+                <p class="lead">Founded in {{ company_founded }} by {{ company_founder }}, Data Lead Generation has grown to become a leading provider of B2B data solutions.</p>
+                <p>Under Zakir's visionary leadership, we've built a team of experienced professionals dedicated to helping businesses connect with their ideal clients through accurate, reliable, and actionable data.</p>
+                <p>Our mission is simple: to help businesses grow through high-quality lead generation and data services. We believe that with the right data, businesses can make better decisions, target the right prospects, and achieve their growth objectives.</p>
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-calendar-alt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Founded</h5>
+                                    <p>{{ company_founded }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-0">Team Size</h5>
+                                    <p>11-50 employees</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values Section -->
+<section class="values bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Our Core Values</h2>
+                <p class="mb-5">The principles that guide us in delivering exceptional service to our clients.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <h4>Accuracy & Reliability</h4>
+                        <p>We provide 100% updated data and verified emails to ensure your campaigns achieve maximum success.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Innovation</h4>
+                        <p>We use cutting-edge tools and technologies to deliver innovative data solutions tailored to your business.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Client Success</h4>
+                        <p>Our focus is on helping you grow through scalable, reliable, and impactful data strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Leadership Section -->
+<section class="leadership py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Our Leadership</h2>
+                <p class="mb-5">Meet the team that's driving innovation in B2B lead generation.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8cGVvcGxlLHBvcnRyYWl0fHx8fHx8MTY4NjY4NzIwMA&ixlib=rb-4.0.3&q=80&w=300" alt="Zakir Hussain" class="img-fluid">
+                    <h4 class="mt-4">Zakir Hussain</h4>
+                    <p class="text-muted">Founder & CEO</p>
+                    <p>Visionary leader with expertise in data solutions and business growth strategies.</p>
+                    <ul class="team-social">
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8cGVvcGxlLHBvcnRyYWl0fHx8fHx8MTY4NjY4NzI3MA&ixlib=rb-4.0.3&q=80&w=300" alt="Sarah Johnson" class="img-fluid">
+                    <h4 class="mt-4">Sarah Johnson</h4>
+                    <p class="text-muted">Chief Operations Officer</p>
+                    <p>Expert in streamlining operations and ensuring high-quality service delivery.</p>
+                    <ul class="team-social">
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8cGVvcGxlLHBvcnRyYWl0fHx8fHx8MTY4NjY4NzMyOA&ixlib=rb-4.0.3&q=80&w=300" alt="David Chen" class="img-fluid">
+                    <h4 class="mt-4">David Chen</h4>
+                    <p class="text-muted">Chief Technology Officer</p>
+                    <p>Technology innovator focusing on data mining and automation solutions.</p>
+                    <ul class="team-social">
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Expertise Section -->
+<section class="expertise bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0 order-lg-2">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad" alt="Business Networking" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="section-title">Our Expertise</h2>
+                <p>At Data Lead Generation, we specialize in providing high-quality B2B data solutions that help businesses connect with their ideal clients. Our expertise ensures error-free delivery, making us a trusted partner for businesses of all sizes.</p>
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div>
+                                    <h5>Data Mining</h5>
+                                    <p>Extract valuable insights from raw data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5>Email List Building</h5>
+                                    <p>Create targeted email lists for campaigns.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-broom"></i>
+                                </div>
+                                <div>
+                                    <h5>Data Cleansing</h5>
+                                    <p>Clean and validate existing data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex">
+                                <div class="me-3 text-primary">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h5>Web Scraping</h5>
+                                    <p>Extract data from websites and online sources.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Clients Section -->
+<section class="clients py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title text-center">Industries We Serve</h2>
+                <p class="mb-5">Our lead generation services cater to a wide range of industries and business needs.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-laptop-code fa-3x text-primary"></i>
+                        </div>
+                        <h4>Technology</h4>
+                        <p>Software, IT Services, SaaS, Hardware</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-hospital-user fa-3x text-primary"></i>
+                        </div>
+                        <h4>Healthcare</h4>
+                        <p>Medical Devices, Healthcare Services, Pharmaceuticals</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-line fa-3x text-primary"></i>
+                        </div>
+                        <h4>Finance</h4>
+                        <p>Banking, Insurance, Investment, FinTech</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-industry fa-3x text-primary"></i>
+                        </div>
+                        <h4>Manufacturing</h4>
+                        <p>Industrial, Automotive, Consumer Goods</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-primary text-white p-5 rounded shadow">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8 mb-4 mb-lg-0">
+                            <h2 class="mb-3">Ready to partner with us?</h2>
+                            <p class="lead mb-0">Let's discuss how our data solutions can drive your business growth.</p>
+                        </div>
+                        <div class="col-lg-4 text-lg-end">
+                            <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
