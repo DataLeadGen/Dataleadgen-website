@@ -245,13 +245,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .service-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
     transition: var(--transition);
     height: 100%;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .service-card:hover {
@@ -371,12 +373,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .testimonial-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
     transition: var(--transition);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .testimonial-card:hover {
@@ -430,10 +434,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-form {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .contact-info {
@@ -482,13 +488,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lead-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
     transition: var(--transition);
     height: 100%;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .lead-card:hover {
@@ -968,4 +976,86 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     color: var(--gray-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    color: var(--text-color);
+    transition: var(--theme-transition);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    position: relative;
+    outline: none;
+}
+
+.theme-toggle:hover {
+    background-color: var(--light-blue);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.theme-toggle .fa-sun {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.5) rotate(180deg);
+}
+
+.theme-toggle .fa-moon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+html.dark-mode .theme-toggle .fa-sun {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+html.dark-mode .theme-toggle .fa-moon {
+    opacity: 0;
+    transform: scale(0.5) rotate(180deg);
+}
+
+/* Dark mode additional styles */
+html.dark-mode .navbar {
+    background-color: var(--navbar-bg);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+html.dark-mode .navbar-nav .nav-link {
+    color: var(--text-color);
+}
+
+html.dark-mode .form-control {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-color);
+}
+
+html.dark-mode .table {
+    color: var(--text-color);
+}
+
+html.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--table-stripe);
+}
+
+html.dark-mode .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+html.dark-mode .modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
 }

@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize hover effects for special elements
     initHoverEffects();
+    
+    // Initialize dark mode functionality
+    initThemeToggle();
 });
 
 // Function to initialize animations
