@@ -318,12 +318,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .team-member {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 10px;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px var(--shadow-color);
     transition: var(--transition);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .team-member:hover {
@@ -473,13 +475,21 @@ h1, h2, h3, h4, h5, h6 {
 .form-control {
     padding: 0.8rem 1.2rem;
     border-radius: 5px;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid var(--input-border);
     margin-bottom: 1.5rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: var(--theme-transition);
 }
 
 .form-control:focus {
     box-shadow: none;
     border-color: var(--primary-color);
+    background-color: var(--input-bg);
+}
+
+html.dark-mode .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Sample leads section */
@@ -803,7 +813,8 @@ h1, h2, h3, h4, h5, h6 {
 .typical-fields {
     margin-top: 15px;
     padding-top: 15px;
-    border-top: 1px dashed rgba(0,0,0,0.1);
+    border-top: 1px dashed var(--border-color);
+    transition: var(--theme-transition);
 }
 
 .typical-fields-title {
@@ -928,10 +939,10 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .navbar-collapse {
-        background-color: white;
+        background-color: var(--card-bg);
         padding: 1.5rem;
         border-radius: 5px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px var(--shadow-color);
         margin-top: 1rem;
     }
 }
@@ -1058,4 +1069,21 @@ html.dark-mode .navbar-toggler-icon {
 html.dark-mode .modal-content {
     background-color: var(--card-bg);
     color: var(--text-color);
+}
+
+/* Section backgrounds in dark mode */
+html.dark-mode .services,
+html.dark-mode .team,
+html.dark-mode .contact,
+html.dark-mode .breadcrumb-section {
+    background-color: var(--card-bg);
+}
+
+/* Card hover in dark mode */
+html.dark-mode .service-card:hover,
+html.dark-mode .team-member:hover,
+html.dark-mode .testimonial-card:hover,
+html.dark-mode .lead-card:hover,
+html.dark-mode .feature-box:hover {
+    box-shadow: 0 15px 30px var(--shadow-color);
 }
