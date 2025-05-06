@@ -1,0 +1,104 @@
+#globe-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--light-blue);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+#globe-container:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.globe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    animation: rotate 60s linear infinite;
+    transform-origin: center center;
+}
+
+.globe-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    z-index: 10;
+}
+
+.globe-node {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    z-index: 4;
+    animation: pulse-node 3s ease-in-out infinite;
+}
+
+.globe-social-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse-node {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    #globe-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    #globe-container {
+        height: 300px;
+    }
+}
+
+/* Dark mode adjustments */
+html.dark-mode #globe-container {
+    background-color: var(--light-blue);
+}
+
+html.dark-mode .globe-node {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 15px rgba(66, 135, 245, 0.8);
+}
+
+html.dark-mode .globe-social-icon {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(66, 135, 245, 0.6);
+}

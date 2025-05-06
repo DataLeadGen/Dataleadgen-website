@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Data Lead Generation - B2B Lead Generation Services{% endblock %}
+{% block title %} Data Lead Generation - B2B Lead Generation Services {% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -16,9 +16,18 @@
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85" alt="Business Data Analytics" class="img-fluid rounded">
+                <div id="globe-container" class="rounded shadow">
+                    <!-- Network Globe visualization will be rendered here by social_media_globe.js -->
+                    <div class="globe-loading">
+                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <p class="text-muted mb-1"><i class="fas fa-globe-americas me-2"></i><strong>Social Media Universe</strong></p>
+                    <small class="text-muted">Connecting businesses worldwide through our verified contact database</small>
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
 </section>
 
