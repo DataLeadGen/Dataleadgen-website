@@ -2,10 +2,18 @@
 
 {% block title %}About Us - Data Lead Generation{% endblock %}
 
+{% block extra_css %}
+<link href="{{ url_for('static', filename='css/team.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <!-- Breadcrumb -->
 <div class="breadcrumb-section">
     <div class="container">
+        
+        <br>
+        <br>
+        <br>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
@@ -118,7 +126,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="team-member text-center">
-                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8cGVvcGxlLHBvcnRyYWl0fHx8fHx8MTY4NjY4NzIwMA&ixlib=rb-4.0.3&q=80&w=300" alt="Zakir Hussain" class="img-fluid">
+                    <img src="/static/images/snapedit_1748435953665.jpeg" alt="Zakir Hussain" class="img-fluid team-img">
                     <h4 class="mt-4">Zakir Hussain</h4>
                     <p class="text-muted">Founder & CEO</p>
                     <p>Visionary leader with expertise in data solutions and business growth strategies.</p>
@@ -131,10 +139,10 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="team-member text-center">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8cGVvcGxlLHBvcnRyYWl0fHx8fHx8MTY4NjY4NzI3MA&ixlib=rb-4.0.3&q=80&w=300" alt="Sarah Johnson" class="img-fluid">
-                    <h4 class="mt-4">Sarah Johnson</h4>
-                    <p class="text-muted">Chief Operations Officer</p>
-                    <p>Expert in streamlining operations and ensuring high-quality service delivery.</p>
+                    <img src="/static/images/NADEEM1.png" alt="Nadeem Ahmed" class="img-fluid team-img">
+                    <h4 class="mt-4"> Nadeem Ahmed  </h4>
+                    <p class="text-muted">Project Manager</p>
+                    <p>Project Manager specializing in streamlining operations and delivering high-quality projects on time.</p>
                     <ul class="team-social">
                         <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -144,10 +152,37 @@
             </div>
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="team-member text-center">
-                    <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8cGVvcGxlLHBvcnRyYWl0fHx8fHx8MTY4NjY4NzMyOA&ixlib=rb-4.0.3&q=80&w=300" alt="David Chen" class="img-fluid">
-                    <h4 class="mt-4">David Chen</h4>
-                    <p class="text-muted">Chief Technology Officer</p>
-                    <p>Technology innovator focusing on data mining and automation solutions.</p>
+                    <img src="/static/images/SALMAN.jpg" alt="Salman ansari" class="img-fluid team-img">
+                    <h4 class="mt-4">Salman Ansari</h4>
+                    <p class="text-muted">Quality Assurance Manage</p>
+                    <p>Ensures all deliverables meet company and industry standards through rigorous quality checks.</p>
+                    <ul class="team-social">
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- New Employee Card: Yahya Ansari, IT Manager -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="/static/images/YAHYA.png" alt="Yahya Ansari" class="img-fluid team-img">
+                    <h4 class="mt-4">Yahya Ansari</h4>
+                    <p class="text-muted">IT Manager</p>
+                    <p>Expert in IT infrastructure and security, ensuring smooth technology operations for the team.</p>
+                    <ul class="team-social">
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="/static/images/Hafeeza.jpg" alt="Hafeez Bano" class="img-fluid team-img">
+                    <h4 class="mt-4">Hafeeza Bano </h4>
+                    <p class="text-muted">Sales Manager</p>
+                    <p>Expert in IT infrastructure and security, ensuring smooth technology operations for the team.</p>
                     <ul class="team-social">
                         <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>

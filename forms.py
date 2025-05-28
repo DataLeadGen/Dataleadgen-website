@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SelectField, SubmitField
-from wtforms.validators import DataRequired, Email, Length
+from wtforms import StringField, TextAreaField, SelectField, SubmitField, SelectMultipleField, IntegerField, RadioField
+from wtforms.validators import DataRequired, Email, Length, Optional
 
 class ContactForm(FlaskForm):
     """Contact form for users to reach out"""
@@ -41,3 +41,48 @@ class ContactForm(FlaskForm):
     ])
     
     submit = SubmitField('Send Message')
+
+class CustomizeLeadsForm(FlaskForm):
+    """Form for users to customize their lead generation criteria"""
+    
+    # Country/Location field (can be multiple)
+    countries = StringField('Country / Location', validators=[
+        Optional()
+    ], description="Enter countries or regions separated by commas (e.g., USA, UK, Europe)")
+    
+    # Industry/Company Type field
+    industry = StringField('Industry / Company Type', validators=[
+        Optional()
+    ], description="Enter industries or company types (e.g., Tech, SaaS, Marketing)")
+    
+    # Employee Count Range
+    employee_count = SelectField('Employee Count Range', choices=[
+        ('', 'Select employee count range (optional)'),
+        ('1-10', '1-10 employees'),
+        ('11-50', '11-50 employees'),
+        ('51-200', '51-200 employees'),
+        ('201-500', '201-500 employees'),
+        ('501-1000', '501-1000 employees'),
+        ('1001+', '1001+ employees')
+    ], validators=[Optional()])
+    
+    # Target Title field (can be multiple)
+    target_titles = StringField('Target Titles', validators=[
+        Optional()
+    ], description="Enter job titles separated by commas (e.g., CEO, Founder, VP of Sales)")
+    
+    # Per Country / Per Company
+    distribution_type = RadioField('Distribution Type', choices=[
+        ('per_country', 'Per Country (leads distributed evenly across countries)'),
+        ('per_company', 'Per Company (leads focused on specific companies)')
+    ], validators=[Optional()])
+    
+    # Additional Notes
+    notes = TextAreaField('Additional Requirements', validators=[Optional()],
+                         description="Describe any specific requirements, custom filters, or exclusions (e.g., skip freelancers, exclude agencies, target SaaS only, etc.)")
+    
+    # Additional field for any other preferences
+    additional_preferences = TextAreaField('Any Other Preferences', validators=[Optional()],
+                         description="Any other preferences or requirements you'd like us to consider")
+    
+    submit = SubmitField('Get My Customized Leads')

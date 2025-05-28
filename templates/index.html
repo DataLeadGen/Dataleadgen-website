@@ -11,20 +11,14 @@
                 <h1>Drive Business Growth with <span class="text-primary">Quality Lead Data</span></h1>
                 <p>Connect with your ideal clients through accurate, reliable, and actionable B2B data solutions tailored to your business needs.</p>
                 <div class="d-flex">
-                    <a href="{{ url_for('contact') }}" class="btn btn-primary me-3">Get Started</a>
+                    <a href="{{ url_for('customize_leads') }}" class="btn btn-primary me-3">Customize Leads</a>
                     <a href="{{ url_for('services') }}" class="btn btn-outline-primary">Explore Services</a>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
                 <div id="globe-container" class="rounded shadow">
-                    <!-- Network Globe visualization will be rendered here by social_media_globe.js -->
-                    <div class="globe-loading">
-                        <i class="fas fa-spinner fa-spin fa-2x"></i>
-                    </div>
-                </div>
-                <div class="text-center mt-3">
-                    <p class="text-muted mb-1"><i class="fas fa-globe-americas me-2"></i><strong>Social Media Universe</strong></p>
-                    <small class="text-muted">Connecting businesses worldwide through our verified contact database</small>
+                    <!-- Network Globe visualization replaced with static image -->
+                    <img src="{{ url_for('static', filename='images/Social media Universe.png') }}" alt="Social Media Universe" class="img-fluid">
                 </div>
             </div>
         </div>        
@@ -204,6 +198,59 @@
                         <p class="card-text">We stay ahead of industry trends to provide you with the most relevant and valuable lead data for your business.</p>
                         <a href="{{ url_for('sample_leads') }}" class="btn btn-outline-primary">View Sample Data</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Customize Leads Section -->
+<section class="customize-leads-promo py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Customize Your Lead Generation" class="img-fluid rounded shadow-lg" style="transform: perspective(1000px) rotateY(-15deg); transition: all 0.5s ease;">
+            </div>
+            <div class="col-lg-6">
+                <div class="ps-lg-4">
+                    <h2 class="section-title">Customize Your Lead Generation</h2>
+                    <p class="lead mb-4">Our new interactive tool allows you to specify exactly what you're looking for in your ideal leads.</p>
+                    
+                    <div class="features-list mb-4">
+                        <div class="d-flex mb-3">
+                            <div class="me-3 text-primary">
+                                <i class="fas fa-globe-americas fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Target Specific Locations</h5>
+                                <p class="mb-0">Select countries or regions to focus your lead generation efforts.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-3">
+                            <div class="me-3 text-primary">
+                                <i class="fas fa-industry fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Industry Targeting</h5>
+                                <p class="mb-0">Specify industries or company types to ensure relevant leads.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-3">
+                            <div class="me-3 text-primary">
+                                <i class="fas fa-user-tie fa-2x"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Decision Maker Focus</h5>
+                                <p class="mb-0">Target specific job titles to reach the right decision makers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="{{ url_for('customize_leads') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-crosshairs me-2"></i> Customize Your Leads Now
+                    </a>
                 </div>
             </div>
         </div>

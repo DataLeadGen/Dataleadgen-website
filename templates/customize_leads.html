@@ -1,0 +1,613 @@
+{% extends 'base.html' %}
+
+{% block title %}Customize Leads - Data Lead Generation{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Custom styles for the Customize Leads page */
+    .customize-leads-section {
+        padding: 5rem 0;
+        background-color: var(--light-color);
+        background-image: linear-gradient(135deg, var(--light-blue) 0%, rgba(0,86,179,0.05) 100%);
+    }
+    
+    .form-card {
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .form-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .form-header {
+        margin-bottom: 2.5rem;
+        text-align: center;
+    }
+    
+    .form-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        animation: fadeIn 1s ease-out;
+    }
+    
+    .form-header p {
+        color: var(--gray-color);
+        font-size: 1.1rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.8rem;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .form-label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+        color: var(--text-color);
+        transition: all 0.3s ease;
+    }
+    
+    .form-control {
+        padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        border: 2px solid var(--input-border);
+        background-color: var(--input-bg);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    .form-text {
+        color: var(--gray-color);
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+    
+    .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .radio-item {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .radio-label {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border: 2px solid var(--input-border);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .radio-label:hover {
+        border-color: var(--primary-color);
+        background-color: rgba(0, 86, 179, 0.05);
+    }
+    
+    input[type="radio"]:checked + .radio-label {
+        border-color: var(--primary-color);
+        background-color: rgba(0, 86, 179, 0.1);
+    }
+    
+    .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 2rem;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .submit-btn:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: all 0.6s ease;
+        z-index: -1;
+    }
+    
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 86, 179, 0.3);
+    }
+    
+    .submit-btn:hover:before {
+        left: 100%;
+    }
+    
+    .form-icon {
+        margin-right: 0.5rem;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+    }
+    
+    .form-group:hover .form-icon {
+        transform: scale(1.2);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .breadcrumb-section {
+        padding: 2rem 0;
+        background-color: var(--light-blue);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .form-card {
+            padding: 1.5rem;
+        }
+        
+        .form-header h1 {
+            font-size: 2rem;
+        }
+        
+        .radio-group {
+            flex-direction: column;
+        }
+        
+        .radio-item {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Customize Leads</li>
+            </ol>
+        </nav>
+        <h1 class="mb-0">Customize Leads</h1>
+    </div>
+</div>
+
+<!-- Customize Leads Form Section -->
+<section class="customize-leads-section">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="form-card">
+                    <div class="form-header">
+                        <h1><i class="fas fa-crosshairs"></i> Target Leads Criteria</h1>
+                        <p>Customize your lead generation requirements by providing targeting information below. All fields are optional - fill in only what matters to you!</p>
+                    </div>
+                    
+                    <form method="POST" action="{{ url_for('customize_leads') }}" id="customizeLeadsForm">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="form-group">
+                            <label for="{{ form.countries.id }}" class="form-label">
+                                <i class="fas fa-globe form-icon"></i> {{ form.countries.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            {{ form.countries(class="form-control", placeholder="e.g., USA, UK, Canada, Australia") }}
+                            <small class="form-text">{{ form.countries.description }}</small>
+                            {% if form.countries.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.countries.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.industry.id }}" class="form-label">
+                                <i class="fas fa-industry form-icon"></i> {{ form.industry.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            {{ form.industry(class="form-control", placeholder="e.g., Technology, SaaS, Marketing, Healthcare") }}
+                            <small class="form-text">{{ form.industry.description }}</small>
+                            {% if form.industry.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.industry.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.employee_count.id }}" class="form-label">
+                                <i class="fas fa-users form-icon"></i> {{ form.employee_count.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            {{ form.employee_count(class="form-control") }}
+                            {% if form.employee_count.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.employee_count.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.target_titles.id }}" class="form-label">
+                                <i class="fas fa-user-tie form-icon"></i> {{ form.target_titles.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            {{ form.target_titles(class="form-control", placeholder="e.g., CEO, Founder, VP of Sales, Marketing Director") }}
+                            <small class="form-text">{{ form.target_titles.description }}</small>
+                            {% if form.target_titles.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.target_titles.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-random form-icon"></i> {{ form.distribution_type.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            <div class="radio-group">
+                                {% for subfield in form.distribution_type %}
+                                <div class="radio-item">
+                                    {{ subfield(style="display: none;", id=subfield.id) }}
+                                    <label for="{{ subfield.id }}" class="radio-label">
+                                        <i class="fas {% if loop.index == 1 %}fa-globe-americas{% else %}fa-building{% endif %} me-2"></i>
+                                        {{ subfield.label }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% if form.distribution_type.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.distribution_type.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.notes.id }}" class="form-label">
+                                <i class="fas fa-sticky-note form-icon"></i> {{ form.notes.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            {{ form.notes(class="form-control", rows=4, placeholder="Describe any specific requirements, custom filters, or exclusions...") }}
+                            <small class="form-text">{{ form.notes.description }}</small>
+                            {% if form.notes.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.notes.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ form.additional_preferences.id }}" class="form-label">
+                                <i class="fas fa-sliders-h form-icon"></i> {{ form.additional_preferences.label }} <span class="text-muted">(optional)</span>
+                            </label>
+                            {{ form.additional_preferences(class="form-control", rows=4, placeholder="Any other preferences or requirements you'd like us to consider...") }}
+                            <small class="form-text">{{ form.additional_preferences.description }}</small>
+                            {% if form.additional_preferences.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.additional_preferences.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        {{ form.submit(class="submit-btn") }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Page load animation
+        document.querySelector('.form-card').style.opacity = '0';
+        document.querySelector('.form-card').style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            document.querySelector('.form-card').style.opacity = '1';
+            document.querySelector('.form-card').style.transform = 'translateY(0)';
+        }, 300);
+        
+        // Animate form elements on page load with staggered timing
+        const formGroups = document.querySelectorAll('.form-group');
+        formGroups.forEach((group, index) => {
+            group.style.opacity = '0';
+            group.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                group.style.opacity = '1';
+                group.style.transform = 'translateY(0)';
+            }, 500 + (index * 100)); // Delay start after card animation
+        });
+        
+        // Form validation and enhanced UX
+        const form = document.getElementById('customizeLeadsForm');
+        const inputs = form.querySelectorAll('input, textarea, select');
+        
+        // Add floating label effect
+        inputs.forEach(input => {
+            // Skip radio buttons
+            if (input.type === 'radio') return;
+            
+            // Add focus effects with glow
+            input.addEventListener('focus', function() {
+                const formGroup = this.closest('.form-group');
+                formGroup.classList.add('focused');
+                
+                // Add subtle glow effect
+                this.style.boxShadow = '0 0 10px rgba(0, 86, 179, 0.2)';
+            });
+            
+            input.addEventListener('blur', function() {
+                const formGroup = this.closest('.form-group');
+                formGroup.classList.remove('focused');
+                
+                // Remove glow effect
+                this.style.boxShadow = '';
+                
+                // Simple validation on blur
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.classList.add('is-invalid');
+                } else {
+                    this.classList.remove('is-invalid');
+                    if (this.value.trim()) {
+                        this.classList.add('is-valid');
+                    } else {
+                        this.classList.remove('is-valid');
+                    }
+                }
+            });
+            
+            // Add typing animation effect for text inputs
+            if (input.type === 'text' || input.tagName.toLowerCase() === 'textarea') {
+                input.addEventListener('input', function() {
+                    // Pulse border effect
+                    this.style.borderColor = 'var(--primary-color)';
+                    this.style.transform = 'translateY(-1px)';
+                    
+                    setTimeout(() => {
+                        this.style.borderColor = '';
+                        this.style.transform = '';
+                    }, 300);
+                    
+                    // Animate the icon
+                    const icon = this.closest('.form-group').querySelector('.form-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2)';
+                        setTimeout(() => {
+                            icon.style.transform = '';
+                        }, 300);
+                    }
+                });
+            }
+        });
+        
+        // Enhanced radio button interaction with animation
+        const radioLabels = document.querySelectorAll('.radio-label');
+        radioLabels.forEach(label => {
+            label.addEventListener('click', function() {
+                // Remove active class from all labels
+                radioLabels.forEach(l => {
+                    l.classList.remove('active');
+                    l.style.transform = '';
+                });
+                
+                // Add active class and transform effect
+                this.classList.add('active');
+                this.style.transform = 'scale(1.03)';
+                
+                // Animate the icon inside
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        icon.style.transform = '';
+                    }, 300);
+                }
+            });
+        });
+        
+        // Submit button hover animation with particle effect
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.addEventListener('mouseover', function() {
+            this.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Get My Customized Leads';
+            this.style.transform = 'translateY(-3px)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 86, 179, 0.3)';
+        });
+        
+        submitBtn.addEventListener('mouseout', function() {
+            this.innerHTML = 'Get My Customized Leads';
+            this.style.transform = '';
+            this.style.boxShadow = '';
+        });
+        
+        // Form submission animation and validation
+        form.addEventListener('submit', function(e) {
+            const isValid = form.checkValidity();
+            
+            if (!isValid) {
+                e.preventDefault();
+                
+                // Add shake animation to form
+                form.classList.add('shake-horizontal');
+                setTimeout(() => {
+                    form.classList.remove('shake-horizontal');
+                }, 600);
+                
+                // Highlight invalid fields with animation
+                const invalidInputs = form.querySelectorAll(':invalid');
+                invalidInputs.forEach(input => {
+                    const formGroup = input.closest('.form-group');
+                    
+                    // Add invalid class
+                    input.classList.add('is-invalid');
+                    
+                    // Add shake animation
+                    formGroup.classList.add('shake');
+                    formGroup.style.borderLeft = '3px solid #dc3545';
+                    
+                    setTimeout(() => {
+                        formGroup.classList.remove('shake');
+                    }, 600);
+                });
+                
+                // Scroll to first invalid field with smooth animation
+                if (invalidInputs.length > 0) {
+                    invalidInputs[0].scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }
+            } else {
+                // Show success animation
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Processing Your Request...';
+                submitBtn.disabled = true;
+                submitBtn.classList.add('success-pulse');
+                
+                // Add success animation to form
+                form.style.transition = 'all 0.5s ease';
+                form.style.transform = 'scale(0.98)';
+                
+                setTimeout(() => {
+                    form.style.transform = '';
+                }, 300);
+            }
+        });
+        
+        // Add custom animations for specific fields
+        
+        // Countries field special effect
+        const countriesField = document.getElementById('countries');
+        if (countriesField) {
+            countriesField.addEventListener('focus', function() {
+                const icon = this.closest('.form-group').querySelector('.form-icon');
+                icon.classList.add('fa-spin-pulse');
+            });
+            
+            countriesField.addEventListener('blur', function() {
+                const icon = this.closest('.form-group').querySelector('.form-icon');
+                icon.classList.remove('fa-spin-pulse');
+            });
+        }
+        
+        // Industry field special effect
+        const industryField = document.getElementById('industry');
+        if (industryField) {
+            industryField.addEventListener('focus', function() {
+                const icon = this.closest('.form-group').querySelector('.form-icon');
+                icon.classList.add('fa-bounce');
+            });
+            
+            industryField.addEventListener('blur', function() {
+                const icon = this.closest('.form-group').querySelector('.form-icon');
+                icon.classList.remove('fa-bounce');
+            });
+        }
+        
+        // Add CSS animation classes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+            
+            @keyframes shake-horizontal {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+            
+            @keyframes success-pulse {
+                0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+                70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+            }
+            
+            .shake {
+                animation: shake 0.5s ease-in-out;
+            }
+            
+            .shake-horizontal {
+                animation: shake-horizontal 0.7s ease-in-out;
+            }
+            
+            .success-pulse {
+                animation: success-pulse 1.5s infinite;
+            }
+            
+            .fa-spin-pulse {
+                animation: fa-spin 2s infinite linear;
+            }
+            
+            .fa-bounce {
+                animation: fa-bounce 1s infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    });
+</script>
+{% endblock %}

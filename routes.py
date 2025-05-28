@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from app import app
-from forms import ContactForm
+from forms import ContactForm, CustomizeLeadsForm
 from models import LeadSample
 
 @app.route('/')
@@ -103,6 +103,20 @@ def page_not_found(e):
 def server_error(e):
     """Handle 500 errors"""
     return render_template('500.html'), 500
+
+@app.route('/customize-leads', methods=['GET', 'POST'])
+def customize_leads():
+    """Render the customize leads page and handle form submission"""
+    form = CustomizeLeadsForm()
+    
+    if request.method == 'POST':
+        # Process the form even if it's not fully validated since all fields are optional
+        # In a real application, you would save the form data to a database
+        # and potentially send an email notification
+        flash('Thank you for submitting your lead criteria! Our team will review your request and get back to you soon.', 'success')
+        return redirect(url_for('customize_leads'))
+    
+    return render_template('customize_leads.html', form=form)
 
 @app.context_processor
 def inject_config():

@@ -1,0 +1,79 @@
+/* Team Member Image Enhancement */
+.team-member img, .team-img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border: 5px solid #fff;
+    transition: all 0.3s ease;
+    margin: 0 auto 1.5rem;
+    display: block;
+    image-rendering: -webkit-optimize-contrast; /* Improves image sharpness in Chrome */
+    image-rendering: crisp-edges; /* Improves image sharpness in Firefox */
+    -ms-interpolation-mode: nearest-neighbor; /* Improves image sharpness in IE */
+    
+    /* Additional enhancements for HD display */
+    backface-visibility: hidden; /* Prevents blurry text during transitions */
+    transform: translateZ(0); /* Forces hardware acceleration */
+    will-change: transform; /* Hints the browser about upcoming transform changes */
+    filter: brightness(1.02) contrast(1.05); /* Slightly enhance brightness and contrast */
+}
+
+.team-member img:hover, .team-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border-color: #0056b3; /* Highlight border on hover with primary color */
+}
+
+.team-member {
+    background-color: var(--card-bg, #ffffff);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode support */
+html.dark-mode .team-member img, 
+html.dark-mode .team-img {
+    border-color: #2c2c2c;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+html.dark-mode .team-member img:hover,
+html.dark-mode .team-img:hover {
+    border-color: #4287f5; /* Use dark mode primary color */
+}
+
+/* Add subtle animation to team section */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.leadership .team-member {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Stagger the animations */
+.leadership .col-lg-4:nth-child(1) .team-member { animation-delay: 0.1s; }
+.leadership .col-lg-4:nth-child(2) .team-member { animation-delay: 0.2s; }
+.leadership .col-lg-4:nth-child(3) .team-member { animation-delay: 0.3s; }
+.leadership .col-lg-4:nth-child(4) .team-member { animation-delay: 0.4s; }
+.leadership .col-lg-4:nth-child(5) .team-member { animation-delay: 0.5s; }
