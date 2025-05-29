@@ -40,7 +40,7 @@
                 <p>At Data Lead Generation, we pride ourselves on providing the most accurate and up-to-date B2B lead data available. Our rigorous verification process ensures that you receive only quality leads that match your specific targeting criteria.</p>
                 <p>Below, you'll find visualizations of our sample lead data to demonstrate the quality and depth of information we provide.</p>
                 <div class="mt-4">
-                    <a href="{{ url_for('contact') }}" class="btn btn-primary">Request Custom Data</a>
+                    <a href="{{ url_for('customize_leads') }}" class="btn btn-primary">Request Custom Data</a>
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
                             <a href="{{ category.main_sheet_url }}" target="_blank" class="btn btn-outline-secondary view-sheet-btn">
                                 <i class="fas fa-table me-1"></i> View Main Sheet
                             </a>
-                            <a href="{{ url_for('contact') }}?service_interest=data_mining" class="btn btn-outline-primary category-btn">Request Leads</a>
+                            <a href="{{ url_for('customize_leads') }}" class="btn btn-outline-primary category-btn">Request Leads</a>
                         </div>
                     </div>
                 </div>
@@ -376,7 +376,7 @@
                             <p class="lead mb-0">Request a free consultation to discuss your specific lead generation needs.</p>
                         </div>
                         <div class="col-lg-4 text-lg-end">
-                            <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Get Started</a>
+                            <a href="{{ url_for('customize_leads') }}" class="btn btn-light btn-lg">Get Started</a>
                         </div>
                     </div>
                 </div>

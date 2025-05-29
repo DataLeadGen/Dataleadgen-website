@@ -45,6 +45,17 @@ class ContactForm(FlaskForm):
 class CustomizeLeadsForm(FlaskForm):
     """Form for users to customize their lead generation criteria"""
     
+    # Contact information (required)
+    name = StringField('Full Name', validators=[
+        DataRequired(message="Please enter your name"),
+        Length(min=2, max=100, message="Name must be between 2 and 100 characters")
+    ])
+    
+    email = StringField('Email Address', validators=[
+        DataRequired(message="Please enter your email address"),
+        Email(message="Please enter a valid email address")
+    ])
+    
     # Country/Location field (can be multiple)
     countries = StringField('Country / Location', validators=[
         Optional()

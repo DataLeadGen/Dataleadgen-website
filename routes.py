@@ -2,6 +2,10 @@ from flask import render_template, request, redirect, url_for, flash
 from app import app
 from forms import ContactForm, CustomizeLeadsForm
 from models import LeadSample
+from flask_mail import Message
+import logging
+from mail import mail
+
 
 @app.route('/')
 def index():
@@ -60,16 +64,76 @@ def services():
     ]
     return render_template('services.html', services=services_list)
 
+def send_email(subject, recipient, template, **kwargs):
+    """Helper function to send emails"""
+    try:
+        # Log email attempt for debugging
+        logging.info(f"Attempting to send email: Subject: {subject}, Recipient: {recipient}")
+        
+        # Create message with explicit sender
+        sender = app.config['MAIL_DEFAULT_SENDER']
+        msg = Message(
+            subject=subject,
+            recipients=[recipient],
+            sender=sender,
+            reply_to=sender
+        )
+        
+        # Set HTML content
+        msg.html = render_template(template, **kwargs)
+        
+        # Log SMTP settings for debugging
+        logging.info(f"SMTP Settings: Server: {app.config['MAIL_SERVER']}, "
+                    f"Port: {app.config['MAIL_PORT']}, "
+                    f"Username: {app.config['MAIL_USERNAME']}, "
+                    f"TLS: {app.config['MAIL_USE_TLS']}, "
+                    f"SSL: {app.config['MAIL_USE_SSL']}")
+        
+        # Send email
+        mail.send(msg)
+            
+        logging.info(f"Email sent successfully to {recipient}")
+        return True
+    except Exception as e:
+        logging.error(f"Error sending email: {str(e)}")
+        # Print more detailed error information
+        import traceback
+        logging.error(traceback.format_exc())
+        return False
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     """Render the contact page and handle form submission"""
     form = ContactForm()
     
     if request.method == 'POST' and form.validate_on_submit():
-        # In a real application, you would save the form data to a database
-        # and potentially send an email notification
-        flash('Thank you for your message! We will get back to you soon.', 'success')
-        return redirect(url_for('contact'))
+        try:
+            # Prepare email content
+            subject = f"New Contact Form Submission from {form.name.data}"
+            recipient = app.config['MAIL_USERNAME']
+            
+            # Send email
+            email_sent = send_email(
+                subject=subject,
+                recipient=recipient,
+                template='emails/contact_form.html',
+                name=form.name.data,
+                email=form.email.data,
+                phone=form.phone.data,
+                company=form.company.data,
+                service_interest=dict(form.service_interest.choices).get(form.service_interest.data),
+                message=form.message.data
+            )
+            
+            if email_sent:
+                flash('Thank you for your message! We will get back to you soon.', 'success')
+            else:
+                flash('There was an issue sending your message. Please try again later or contact us directly.', 'danger')
+                
+            return redirect(url_for('contact'))
+        except Exception as e:
+            logging.error(f"Error in contact form submission: {str(e)}")
+            flash('An unexpected error occurred. Please try again later.', 'danger')
     
     return render_template('contact.html', form=form)
 
@@ -109,12 +173,47 @@ def customize_leads():
     """Render the customize leads page and handle form submission"""
     form = CustomizeLeadsForm()
     
-    if request.method == 'POST':
-        # Process the form even if it's not fully validated since all fields are optional
-        # In a real application, you would save the form data to a database
-        # and potentially send an email notification
-        flash('Thank you for submitting your lead criteria! Our team will review your request and get back to you soon.', 'success')
-        return redirect(url_for('customize_leads'))
+    if request.method == 'POST' and form.validate_on_submit():
+        try:
+            # Form is validated with required name and email fields
+            
+            # Prepare email content
+            subject = f"New Lead Customization Request from {form.name.data}"
+            recipient = app.config['MAIL_USERNAME']
+            
+            # Get distribution type label if selected
+            distribution_type_label = ""
+            if form.distribution_type.data:
+                for choice in form.distribution_type.choices:
+                    if choice[0] == form.distribution_type.data:
+                        distribution_type_label = choice[1]
+                        break
+            
+            # Send email
+            email_sent = send_email(
+                subject=subject,
+                recipient=recipient,
+                template='emails/customize_leads_form.html',
+                name=form.name.data,
+                email=form.email.data,
+                countries=form.countries.data,
+                industry=form.industry.data,
+                employee_count=form.employee_count.data,
+                target_titles=form.target_titles.data,
+                distribution_type=distribution_type_label,
+                notes=form.notes.data,
+                additional_preferences=form.additional_preferences.data
+            )
+            
+            if email_sent:
+                flash('Thank you for submitting your lead criteria! Our team will review your request and get back to you soon.', 'success')
+            else:
+                flash('There was an issue sending your request. Please try again later or contact us directly.', 'danger')
+                
+            return redirect(url_for('customize_leads'))
+        except Exception as e:
+            logging.error(f"Error in customize leads form submission: {str(e)}")
+            flash('An unexpected error occurred. Please try again later.', 'danger')
     
     return render_template('customize_leads.html', form=form)
 

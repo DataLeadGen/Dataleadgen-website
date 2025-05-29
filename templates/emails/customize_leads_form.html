@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Lead Customization Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+        .field {
+            margin-bottom: 15px;
+        }
+        .label {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .message {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+        }
+        .empty-field {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>New Lead Customization Request</h1>
+    </div>
+    <div class="content">
+        <div class="field">
+            <span class="label">Name:</span> {{ name }}
+        </div>
+        <div class="field">
+            <span class="label">Email:</span> {{ email }}
+        </div>
+        <div class="field">
+            <span class="label">Countries/Locations:</span> 
+            {% if countries %}
+                {{ countries }}
+            {% else %}
+                <span class="empty-field">Not specified</span>
+            {% endif %}
+        </div>
+        <div class="field">
+            <span class="label">Industry/Company Type:</span> 
+            {% if industry %}
+                {{ industry }}
+            {% else %}
+                <span class="empty-field">Not specified</span>
+            {% endif %}
+        </div>
+        <div class="field">
+            <span class="label">Employee Count Range:</span> 
+            {% if employee_count %}
+                {{ employee_count }}
+            {% else %}
+                <span class="empty-field">Not specified</span>
+            {% endif %}
+        </div>
+        <div class="field">
+            <span class="label">Target Titles:</span> 
+            {% if target_titles %}
+                {{ target_titles }}
+            {% else %}
+                <span class="empty-field">Not specified</span>
+            {% endif %}
+        </div>
+        <div class="field">
+            <span class="label">Distribution Type:</span> 
+            {% if distribution_type %}
+                {{ distribution_type }}
+            {% else %}
+                <span class="empty-field">Not specified</span>
+            {% endif %}
+        </div>
+        <div class="field">
+            <span class="label">Additional Requirements:</span>
+            <div class="message">
+                {% if notes %}
+                    {{ notes }}
+                {% else %}
+                    <span class="empty-field">Not specified</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="field">
+            <span class="label">Any Other Preferences:</span>
+            <div class="message">
+                {% if additional_preferences %}
+                    {{ additional_preferences }}
+                {% else %}
+                    <span class="empty-field">Not specified</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>This email was sent from the customize leads form on Data Lead Generation website.</p>
+    </div>
+</body>
+</html>

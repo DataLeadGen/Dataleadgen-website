@@ -1,3 +1,8 @@
+"""
+Alternative configuration file using SSL (port 465) instead of TLS (port 587)
+Copy this file to config.py if the SSL method works better for your Gmail account
+"""
+
 import os
 
 class Config:
@@ -19,17 +24,16 @@ class Config:
     COMPANY_ADDRESS = "Sardar Patel colony, ward Number 18, Burhanpur, Madhya Pradesh 450331, IN"
     COMPANY_WEBSITE = "https://dataleadgen.com"
     
-    # Flask-Mail configuration
+    # Flask-Mail configuration using SSL instead of TLS
     MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USE_SSL = False
-    # Gmail credentials - using environment variables for security
+    MAIL_PORT = 465  # SSL port
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True  # Use SSL instead of TLS
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'zakirdataleadgen@gmail.com')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'gdnd ayxl anlj ufzo')  # App password for Gmail
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'Covid19567')  # App password should be set in environment variable
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'zakirdataleadgen@gmail.com')
-    MAIL_MAX_EMAILS = None  # No limit on the number of emails
+    MAIL_MAX_EMAILS = 5
     MAIL_ASCII_ATTACHMENTS = False
     MAIL_DEBUG = True  # Enable debug mode for Flask-Mail
-    MAIL_SUPPRESS_SEND = False  # Ensure emails are sent
+    MAIL_SUPPRESS_SEND = False  # Make sure emails are actually sent
     MAIL_TIMEOUT = 30  # Increase timeout to 30 seconds
