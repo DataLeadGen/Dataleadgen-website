@@ -239,7 +239,7 @@
                         </div>
                     </div>
                     
-                    <form method="POST" action="{{ url_for('customize_leads') }}" id="customizeLeadsForm">
+                    <form method="POST" action="{{ url_for('customize_leads') }}" id="customizeLeadsForm" enctype="multipart/form-data">
                         {{ form.hidden_tag() }}
                         
                         <!-- Contact Information Section -->
@@ -310,13 +310,34 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="{{ form.employee_count.id }}" class="form-label">
-                                <i class="fas fa-users form-icon"></i> {{ form.employee_count.label }} <span class="text-muted">(optional)</span>
+                            <label class="form-label">
+                                <i class="fas fa-users form-icon"></i> Employee Count Range <span class="text-muted">(optional)</span>
                             </label>
-                            {{ form.employee_count(class="form-control") }}
-                            {% if form.employee_count.errors %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Min</span>
+                                        {{ form.min_employee_count(class="form-control", placeholder="Minimum", min=1) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Max</span>
+                                        {{ form.max_employee_count(class="form-control", placeholder="Maximum", min=1) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <small class="form-text">Enter the minimum and maximum number of employees for target companies</small>
+                            {% if form.min_employee_count.errors %}
                                 <div class="invalid-feedback d-block">
-                                    {% for error in form.employee_count.errors %}
+                                    {% for error in form.min_employee_count.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if form.max_employee_count.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.max_employee_count.errors %}
                                         {{ error }}
                                     {% endfor %}
                                 </div>
@@ -339,23 +360,17 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-random form-icon"></i> {{ form.distribution_type.label }} <span class="text-muted">(optional)</span>
+                            <label for="{{ form.leads_per_company.id }}" class="form-label">
+                                <i class="fas fa-users form-icon"></i> {{ form.leads_per_company.label }} <span class="text-muted">(optional)</span>
                             </label>
-                            <div class="radio-group">
-                                {% for subfield in form.distribution_type %}
-                                <div class="radio-item">
-                                    {{ subfield(style="display: none;", id=subfield.id) }}
-                                    <label for="{{ subfield.id }}" class="radio-label">
-                                        <i class="fas {% if loop.index == 1 %}fa-globe-americas{% else %}fa-building{% endif %} me-2"></i>
-                                        {{ subfield.label }}
-                                    </label>
-                                </div>
-                                {% endfor %}
+                            <div class="input-group">
+                                {{ form.leads_per_company(class="form-control", placeholder="Number of leads per company", min=1, value=1) }}
+                                <span class="input-group-text">leads</span>
                             </div>
-                            {% if form.distribution_type.errors %}
+                            <small class="form-text">Specify how many contacts you need from each company</small>
+                            {% if form.leads_per_company.errors %}
                                 <div class="invalid-feedback d-block">
-                                    {% for error in form.distribution_type.errors %}
+                                    {% for error in form.leads_per_company.errors %}
                                         {{ error }}
                                     {% endfor %}
                                 </div>
@@ -378,14 +393,23 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="{{ form.additional_preferences.id }}" class="form-label">
-                                <i class="fas fa-sliders-h form-icon"></i> {{ form.additional_preferences.label }} <span class="text-muted">(optional)</span>
+                            <label for="{{ form.sample_file.id }}" class="form-label">
+                                <i class="fas fa-file-upload form-icon"></i> {{ form.sample_file.label }} <span class="text-muted">(optional)</span>
                             </label>
-                            {{ form.additional_preferences(class="form-control", rows=4, placeholder="Any other preferences or requirements you'd like us to consider...") }}
-                            <small class="form-text">{{ form.additional_preferences.description }}</small>
-                            {% if form.additional_preferences.errors %}
+                            <div class="input-group">
+                                {{ form.sample_file(class="form-control") }}
+                                <label class="input-group-text" for="{{ form.sample_file.id }}">Upload</label>
+                            </div>
+                            <small class="form-text">{{ form.sample_file.description }}</small>
+                            <div class="mt-2">
+                                <span class="badge bg-secondary me-1">Excel</span>
+                                <span class="badge bg-secondary me-1">CSV</span>
+                                <span class="badge bg-secondary me-1">PDF</span>
+                                <span class="badge bg-secondary me-1">Image</span>
+                            </div>
+                            {% if form.sample_file.errors %}
                                 <div class="invalid-feedback d-block">
-                                    {% for error in form.additional_preferences.errors %}
+                                    {% for error in form.sample_file.errors %}
                                         {{ error }}
                                     {% endfor %}
                                 </div>
@@ -581,33 +605,51 @@
         
         // Add custom animations for specific fields
         
-        // Countries field special effect
-        const countriesField = document.getElementById('countries');
-        if (countriesField) {
-            countriesField.addEventListener('focus', function() {
+        // File upload field special effect
+        const sampleFileField = document.getElementById('sample_file');
+        if (sampleFileField) {
+            sampleFileField.addEventListener('change', function() {
                 const icon = this.closest('.form-group').querySelector('.form-icon');
-                icon.classList.add('fa-spin-pulse');
-            });
-            
-            countriesField.addEventListener('blur', function() {
-                const icon = this.closest('.form-group').querySelector('.form-icon');
-                icon.classList.remove('fa-spin-pulse');
+                icon.classList.add('fa-bounce');
+                
+                setTimeout(() => {
+                    icon.classList.remove('fa-bounce');
+                }, 1000);
+                
+                // Show filename
+                const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+                const fileNameDisplay = document.createElement('div');
+                fileNameDisplay.className = 'mt-2 text-primary';
+                fileNameDisplay.innerHTML = `<i class="fas fa-file me-1"></i> ${fileName}`;
+                
+                // Remove any existing filename display
+                const existingDisplay = this.closest('.form-group').querySelector('.text-primary');
+                if (existingDisplay) {
+                    existingDisplay.remove();
+                }
+                
+                // Add new filename display
+                this.closest('.form-group').appendChild(fileNameDisplay);
             });
         }
         
-        // Industry field special effect
-        const industryField = document.getElementById('industry');
-        if (industryField) {
-            industryField.addEventListener('focus', function() {
+        // Add special effects for number inputs
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+        numberInputs.forEach(input => {
+            input.addEventListener('focus', function() {
                 const icon = this.closest('.form-group').querySelector('.form-icon');
-                icon.classList.add('fa-bounce');
+                if (icon) {
+                    icon.classList.add('fa-pulse');
+                }
             });
             
-            industryField.addEventListener('blur', function() {
+            input.addEventListener('blur', function() {
                 const icon = this.closest('.form-group').querySelector('.form-icon');
-                icon.classList.remove('fa-bounce');
+                if (icon) {
+                    icon.classList.remove('fa-pulse');
+                }
             });
-        }
+        });
         
         // Add CSS animation classes
         const style = document.createElement('style');

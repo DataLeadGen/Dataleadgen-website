@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <style>
+    /* Earth and orbit styles */
+    .earth {
+      fill: url(#earthGradient);
+      filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.5));
+    }
+    .earth-glow {
+      fill: none;
+      stroke: rgba(0, 150, 255, 0.3);
+      stroke-width: 5;
+      filter: blur(5px);
+    }
+    .orbit {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.2);
+      stroke-width: 1;
+      stroke-dasharray: 5, 5;
+    }
+    .continent {
+      fill: #32CD32;
+      opacity: 0.8;
+    }
+    
+    /* Social media icon styles */
+    .social-icon {
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+    }
+    .social-icon-bg {
+      stroke: white;
+      stroke-width: 1;
+    }
+    
+    /* Animation styles */
+    .rotate {
+      animation: rotate 20s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .orbit-icons {
+      animation: orbit-rotate 15s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .orbit-icons-reverse {
+      animation: orbit-rotate-reverse 12s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Keyframes */
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes orbit-rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes orbit-rotate-reverse {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    @keyframes pulse {
+      0% { opacity: 0.7; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 0.7; transform: scale(0.95); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+  
+  <!-- Definitions -->
+  <defs>
+    <!-- Earth gradient -->
+    <radialGradient id="earthGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#1E90FF" />
+      <stop offset="100%" stop-color="#0000CD" />
+    </radialGradient>
+    
+    <!-- Social media icons -->
+    <symbol id="facebook" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="8" fill="#3b5998" class="social-icon-bg" />
+      <path d="M25,20h-3v-3c0-0.5,0.5-1,1-1h1v-3h-2c-2.2,0-4,1.8-4,4v3h-3v3h3v9h4v-9h2L25,20z" fill="white" />
+    </symbol>
+    
+    <symbol id="twitter" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="8" fill="#1DA1F2" class="social-icon-bg" />
+      <path d="M31,13.1c-0.8,0.4-1.7,0.6-2.6,0.7c0.9-0.6,1.6-1.4,2-2.5c-0.9,0.5-1.8,0.9-2.9,1.1c-0.8-0.9-2-1.4-3.3-1.4
+        c-2.5,0-4.5,2-4.5,4.5c0,0.4,0,0.7,0.1,1c-3.7-0.2-7-2-9.2-4.7c-0.4,0.7-0.6,1.4-0.6,2.3c0,1.6,0.8,2.9,2,3.7
+        c-0.7,0-1.4-0.2-2-0.6v0.1c0,2.2,1.6,4,3.6,4.4c-0.4,0.1-0.8,0.2-1.2,0.2c-0.3,0-0.6,0-0.8-0.1c0.6,1.8,2.2,3.1,4.1,3.1
+        c-1.5,1.2-3.4,1.9-5.5,1.9c-0.4,0-0.7,0-1.1-0.1c2,1.3,4.3,2,6.8,2c8.1,0,12.6-6.7,12.6-12.6c0-0.2,0-0.4,0-0.6
+        C29.7,14.8,30.4,14,31,13.1z" fill="white" />
+    </symbol>
+    
+    <symbol id="instagram" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="8" fill="#C13584" class="social-icon-bg" />
+      <path d="M20,12c2.6,0,2.9,0,3.9,0.1c0.9,0,1.5,0.2,1.8,0.3c0.5,0.2,0.8,0.4,1.1,0.7c0.3,0.3,0.5,0.7,0.7,1.1
+        c0.1,0.3,0.3,0.9,0.3,1.8C28,17,28,17.4,28,20c0,2.6,0,2.9-0.1,3.9c0,0.9-0.2,1.5-0.3,1.8c-0.2,0.5-0.4,0.8-0.7,1.1
+        c-0.3,0.3-0.7,0.5-1.1,0.7c-0.3,0.1-0.9,0.3-1.8,0.3C22.9,28,22.6,28,20,28c-2.6,0-2.9,0-3.9-0.1c-0.9,0-1.5-0.2-1.8-0.3
+        c-0.5-0.2-0.8-0.4-1.1-0.7c-0.3-0.3-0.5-0.7-0.7-1.1c-0.1-0.3-0.3-0.9-0.3-1.8C12,22.9,12,22.6,12,20c0-2.6,0-2.9,0.1-3.9
+        c0-0.9,0.2-1.5,0.3-1.8c0.2-0.5,0.4-0.8,0.7-1.1c0.3-0.3,0.7-0.5,1.1-0.7c0.3-0.1,0.9-0.3,1.8-0.3C17.1,12,17.4,12,20,12 M20,10
+        c-2.7,0-3,0-4.1,0.1c-1.1,0-1.8,0.2-2.4,0.5c-0.7,0.3-1.2,0.6-1.8,1.1c-0.5,0.5-0.9,1.1-1.1,1.8c-0.3,0.6-0.4,1.4-0.5,2.4
+        C10,17,10,17.3,10,20c0,2.7,0,3,0.1,4.1c0,1.1,0.2,1.8,0.5,2.4c0.3,0.7,0.6,1.2,1.1,1.8c0.5,0.5,1.1,0.9,1.8,1.1
+        c0.6,0.3,1.4,0.4,2.4,0.5C17,30,17.3,30,20,30c2.7,0,3,0,4.1-0.1c1.1,0,1.8-0.2,2.4-0.5c0.7-0.3,1.2-0.6,1.8-1.1
+        c0.5-0.5,0.9-1.1,1.1-1.8c0.3-0.6,0.4-1.4,0.5-2.4C30,23,30,22.7,30,20c0-2.7,0-3-0.1-4.1c0-1.1-0.2-1.8-0.5-2.4
+        c-0.3-0.7-0.6-1.2-1.1-1.8c-0.5-0.5-1.1-0.9-1.8-1.1c-0.6-0.3-1.4-0.4-2.4-0.5C23,10,22.7,10,20,10L20,10z" fill="white" />
+      <path d="M20,15c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5S22.8,15,20,15z M20,23c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3
+        S21.7,23,20,23z" fill="white" />
+      <circle cx="25.5" cy="14.5" r="1.5" fill="white" />
+    </symbol>
+    
+    <symbol id="linkedin" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="8" fill="#0077B5" class="social-icon-bg" />
+      <path d="M13,16h3v12h-3V16z M14.5,10c-1,0-1.8,0.8-1.8,1.8s0.8,1.8,1.8,1.8s1.8-0.8,1.8-1.8S15.5,10,14.5,10z
+        M22,16c-1.3,0-2.5,0.5-3,1.3V16h-3v12h3v-6c0-1.1,0.9-2,2-2s2,0.9,2,2v6h3v-7C26,17.8,24.2,16,22,16z" fill="white" />
+    </symbol>
+    
+    <symbol id="youtube" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="8" fill="#FF0000" class="social-icon-bg" />
+      <path d="M30,17.3c0-2.1-1.7-3.8-3.8-3.8H13.8C11.7,13.5,10,15.2,10,17.3v5.4c0,2.1,1.7,3.8,3.8,3.8h12.4
+        c2.1,0,3.8-1.7,3.8-3.8V17.3z M18,22.5v-5l5,2.5L18,22.5z" fill="white" />
+    </symbol>
+    
+    <symbol id="pinterest" viewBox="0 0 40 40">
+      <rect width="40" height="40" rx="8" fill="#E60023" class="social-icon-bg" />
+      <path d="M20,10c-5.5,0-10,4.5-10,10c0,4.1,2.5,7.6,6,9.2c0-0.7,0-1.5,0.2-2.3c0.2-0.8,1.3-5.4,1.3-5.4
+        s-0.3-0.6-0.3-1.6c0-1.5,0.9-2.6,1.9-2.6c0.9,0,1.3,0.7,1.3,1.5c0,0.9-0.6,2.3-0.9,3.5c-0.3,1.1,0.5,1.9,1.6,1.9
+        c1.9,0,3.2-2.4,3.2-5.3c0-2.2-1.5-3.8-4.1-3.8c-3,0-4.8,2.2-4.8,4.7c0,0.9,0.3,1.5,0.7,1.9c0.2,0.2,0.2,0.3,0.2,0.5
+        c-0.1,0.2-0.2,0.7-0.2,0.9c-0.1,0.3-0.3,0.4-0.5,0.3c-1.4-0.6-2-2.1-2-3.8c0-2.8,2.4-6.2,7.1-6.2c3.8,0,6.3,2.8,6.3,5.7
+        c0,3.9-2.2,6.9-5.4,6.9c-1.1,0-2.1-0.6-2.4-1.2c0,0-0.6,2.3-0.7,2.7c-0.2,0.8-0.6,1.5-1,2.1c0.9,0.3,1.8,0.4,2.8,0.4
+        c5.5,0,10-4.5,10-10C30,14.5,25.5,10,20,10z" fill="white" />
+    </symbol>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#121B40" />
+  
+  <!-- Stars -->
+  <g>
+    <circle cx="100" cy="100" r="1" fill="white" opacity="0.8" />
+    <circle cx="200" cy="150" r="1.5" fill="white" opacity="0.7" />
+    <circle cx="300" cy="80" r="1" fill="white" opacity="0.9" />
+    <circle cx="400" cy="120" r="1.2" fill="white" opacity="0.8" />
+    <circle cx="500" cy="90" r="1" fill="white" opacity="0.7" />
+    <circle cx="600" cy="180" r="1.5" fill="white" opacity="0.9" />
+    <circle cx="700" cy="120" r="1" fill="white" opacity="0.8" />
+    <circle cx="150" cy="200" r="1.2" fill="white" opacity="0.7" />
+    <circle cx="250" cy="250" r="1" fill="white" opacity="0.9" />
+    <circle cx="350" cy="220" r="1.5" fill="white" opacity="0.8" />
+    <circle cx="450" cy="180" r="1" fill="white" opacity="0.7" />
+    <circle cx="550" cy="230" r="1.2" fill="white" opacity="0.9" />
+    <circle cx="650" cy="270" r="1" fill="white" opacity="0.8" />
+    <circle cx="120" cy="320" r="1.5" fill="white" opacity="0.7" />
+    <circle cx="220" cy="350" r="1" fill="white" opacity="0.9" />
+    <circle cx="320" cy="380" r="1.2" fill="white" opacity="0.8" />
+    <circle cx="420" cy="420" r="1" fill="white" opacity="0.7" />
+    <circle cx="520" cy="370" r="1.5" fill="white" opacity="0.9" />
+    <circle cx="620" cy="330" r="1" fill="white" opacity="0.8" />
+    <circle cx="720" cy="390" r="1.2" fill="white" opacity="0.7" />
+    <circle cx="180" cy="450" r="1" fill="white" opacity="0.9" />
+    <circle cx="280" cy="480" r="1.5" fill="white" opacity="0.8" />
+    <circle cx="380" cy="520" r="1" fill="white" opacity="0.7" />
+    <circle cx="480" cy="470" r="1.2" fill="white" opacity="0.9" />
+    <circle cx="580" cy="430" r="1" fill="white" opacity="0.8" />
+    <circle cx="680" cy="490" r="1.5" fill="white" opacity="0.7" />
+  </g>
+  
+  <!-- Orbits -->
+  <circle class="orbit" cx="400" cy="300" r="180" />
+  <circle class="orbit" cx="400" cy="300" r="140" />
+  <circle class="orbit" cx="400" cy="300" r="220" />
+  
+  <!-- Earth -->
+  <g>
+    <circle class="earth-glow" cx="400" cy="300" r="100" />
+    <circle class="earth" cx="400" cy="300" r="90" />
+    
+    <!-- Continents -->
+    <g class="rotate">
+      <!-- North America -->
+      <path class="continent" d="M350,240 Q370,230 380,250 Q390,260 370,280 Q350,290 340,270 Q330,250 350,240" />
+      
+      <!-- South America -->
+      <path class="continent" d="M380,300 Q390,310 385,330 Q380,350 370,340 Q360,330 370,310 Q375,300 380,300" />
+      
+      <!-- Europe -->
+      <path class="continent" d="M420,250 Q430,240 440,250 Q450,260 440,270 Q430,280 420,270 Q410,260 420,250" />
+      
+      <!-- Africa -->
+      <path class="continent" d="M430,290 Q440,280 450,290 Q460,300 450,320 Q440,330 430,320 Q420,310 430,290" />
+      
+      <!-- Asia -->
+      <path class="continent" d="M460,260 Q480,250 490,260 Q500,270 490,290 Q480,300 470,290 Q460,280 460,260" />
+      
+      <!-- Australia -->
+      <path class="continent" d="M470,330 Q480,320 490,330 Q500,340 490,350 Q480,360 470,350 Q460,340 470,330" />
+    </g>
+  </g>
+  
+  <!-- Social Media Icons - Outer Orbit -->
+  <g class="orbit-icons">
+    <use xlink:href="#facebook" class="social-icon pulse" x="380" y="80" width="40" height="40" />
+    <use xlink:href="#twitter" class="social-icon pulse" x="580" y="300" width="40" height="40" />
+    <use xlink:href="#youtube" class="social-icon pulse" x="380" y="520" width="40" height="40" />
+    <use xlink:href="#pinterest" class="social-icon pulse" x="180" y="300" width="40" height="40" />
+  </g>
+  
+  <!-- Social Media Icons - Inner Orbit -->
+  <g class="orbit-icons-reverse">
+    <use xlink:href="#instagram" class="social-icon pulse" x="400" y="160" width="40" height="40" />
+    <use xlink:href="#linkedin" class="social-icon pulse" x="520" y="380" width="40" height="40" />
+    <use xlink:href="#facebook" class="social-icon pulse" x="280" y="380" width="40" height="40" />
+    <use xlink:href="#twitter" class="social-icon pulse" x="400" y="440" width="40" height="40" />
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" class="float">
+    Social Media Universe
+  </text>
+</svg>

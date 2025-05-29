@@ -11,6 +11,9 @@ app = Flask(__name__)
 app.config.from_object('config.Config')
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 
+# Set maximum file upload size to 16MB
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
 # Initialize CSRF protection
 csrf = CSRFProtect(app)
 

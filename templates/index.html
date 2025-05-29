@@ -16,9 +16,12 @@
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div id="globe-container" class="rounded shadow">
-                    <!-- Network Globe visualization replaced with static image -->
-                    <img src="{{ url_for('static', filename='images/Social media Universe.png') }}" alt="Social Media Universe" class="img-fluid">
+                <div id="globe-container" class="rounded shadow p-3 bg-dark">
+                    <!-- Social Media Universe visualization with SVG animation -->
+                    <object type="image/svg+xml" data="{{ url_for('static', filename='images/social_media_universe.svg') }}" class="img-fluid">
+                        <!-- Fallback for browsers that don't support SVG -->
+                        <img src="{{ url_for('static', filename='images/Social media Universe.png') }}" alt="Social Media Universe" class="img-fluid">
+                    </object>
                 </div>
             </div>
         </div>        

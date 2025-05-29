@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, TextAreaField, SelectField, SubmitField, SelectMultipleField, IntegerField, RadioField
 from wtforms.validators import DataRequired, Email, Length, Optional
 
@@ -66,34 +67,26 @@ class CustomizeLeadsForm(FlaskForm):
         Optional()
     ], description="Enter industries or company types (e.g., Tech, SaaS, Marketing)")
     
-    # Employee Count Range
-    employee_count = SelectField('Employee Count Range', choices=[
-        ('', 'Select employee count range (optional)'),
-        ('1-10', '1-10 employees'),
-        ('11-50', '11-50 employees'),
-        ('51-200', '51-200 employees'),
-        ('201-500', '201-500 employees'),
-        ('501-1000', '501-1000 employees'),
-        ('1001+', '1001+ employees')
-    ], validators=[Optional()])
+    # Employee Count Range - now using min and max fields
+    min_employee_count = IntegerField('Minimum Employee Count', validators=[Optional()])
+    max_employee_count = IntegerField('Maximum Employee Count', validators=[Optional()])
     
     # Target Title field (can be multiple)
     target_titles = StringField('Target Titles', validators=[
         Optional()
     ], description="Enter job titles separated by commas (e.g., CEO, Founder, VP of Sales)")
     
-    # Per Country / Per Company
-    distribution_type = RadioField('Distribution Type', choices=[
-        ('per_country', 'Per Country (leads distributed evenly across countries)'),
-        ('per_company', 'Per Company (leads focused on specific companies)')
-    ], validators=[Optional()])
+    # Leads per company
+    leads_per_company = IntegerField('How many leads you want per company', validators=[Optional()])
     
     # Additional Notes
     notes = TextAreaField('Additional Requirements', validators=[Optional()],
                          description="Describe any specific requirements, custom filters, or exclusions (e.g., skip freelancers, exclude agencies, target SaaS only, etc.)")
     
-    # Additional field for any other preferences
-    additional_preferences = TextAreaField('Any Other Preferences', validators=[Optional()],
-                         description="Any other preferences or requirements you'd like us to consider")
+    # Sample file upload
+    sample_file = FileField('Attach Sample File', validators=[
+        Optional(),
+        FileAllowed(['xlsx', 'xls', 'csv', 'pdf', 'jpg', 'jpeg', 'png', 'gif'], 'Only Excel, CSV, PDF, and image files are allowed')
+    ], description="Upload a sample file to help us understand your requirements better")
     
     submit = SubmitField('Get My Customized Leads')

@@ -2,9 +2,12 @@ from flask import render_template, request, redirect, url_for, flash
 from app import app
 from forms import ContactForm, CustomizeLeadsForm
 from models import LeadSample
-from flask_mail import Message
+from flask_mail import Message, Attachment
 import logging
 from mail import mail
+import os
+from werkzeug.utils import secure_filename
+from datetime import datetime
 
 
 @app.route('/')
@@ -181,29 +184,75 @@ def customize_leads():
             subject = f"New Lead Customization Request from {form.name.data}"
             recipient = app.config['MAIL_USERNAME']
             
-            # Get distribution type label if selected
-            distribution_type_label = ""
-            if form.distribution_type.data:
-                for choice in form.distribution_type.choices:
-                    if choice[0] == form.distribution_type.data:
-                        distribution_type_label = choice[1]
-                        break
+            # Format employee count range
+            employee_count_range = ""
+            if form.min_employee_count.data is not None and form.max_employee_count.data is not None:
+                employee_count_range = f"{form.min_employee_count.data}-{form.max_employee_count.data} employees"
+            elif form.min_employee_count.data is not None:
+                employee_count_range = f"{form.min_employee_count.data}+ employees"
+            elif form.max_employee_count.data is not None:
+                employee_count_range = f"Up to {form.max_employee_count.data} employees"
             
-            # Send email
-            email_sent = send_email(
+            # Get leads per company
+            leads_per_company = f"{form.leads_per_company.data} leads per company" if form.leads_per_company.data is not None else "Not specified"
+            
+            # Create message with explicit sender
+            sender = app.config['MAIL_DEFAULT_SENDER']
+            msg = Message(
                 subject=subject,
-                recipient=recipient,
-                template='emails/customize_leads_form.html',
+                recipients=[recipient],
+                sender=sender,
+                reply_to=sender
+            )
+            
+            # Set HTML content
+            msg.html = render_template(
+                'emails/customize_leads_form.html',
                 name=form.name.data,
                 email=form.email.data,
                 countries=form.countries.data,
                 industry=form.industry.data,
-                employee_count=form.employee_count.data,
+                employee_count=employee_count_range,
                 target_titles=form.target_titles.data,
-                distribution_type=distribution_type_label,
+                leads_per_company=leads_per_company,
                 notes=form.notes.data,
-                additional_preferences=form.additional_preferences.data
+                has_attachment=form.sample_file.data is not None
             )
+            
+            # Handle file attachment if provided
+            if form.sample_file.data:
+                try:
+                    # Get the file data
+                    file_data = form.sample_file.data
+                    filename = secure_filename(file_data.filename)
+                    
+                    # Add timestamp to filename to make it unique
+                    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+                    filename_parts = os.path.splitext(filename)
+                    unique_filename = f"{filename_parts[0]}_{timestamp}{filename_parts[1]}"
+                    
+                    # Attach the file to the email
+                    attachment = Attachment(
+                        filename=unique_filename,
+                        content_type=file_data.content_type,
+                        data=file_data.read()
+                    )
+                    msg.attachments.append(attachment)
+                    
+                    logging.info(f"File attached: {unique_filename}")
+                except Exception as e:
+                    logging.error(f"Error attaching file: {str(e)}")
+            
+            # Send email
+            try:
+                mail.send(msg)
+                logging.info(f"Email sent successfully to {recipient}")
+                email_sent = True
+            except Exception as e:
+                logging.error(f"Error sending email: {str(e)}")
+                import traceback
+                logging.error(traceback.format_exc())
+                email_sent = False
             
             if email_sent:
                 flash('Thank you for submitting your lead criteria! Our team will review your request and get back to you soon.', 'success')
@@ -213,6 +262,8 @@ def customize_leads():
             return redirect(url_for('customize_leads'))
         except Exception as e:
             logging.error(f"Error in customize leads form submission: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
             flash('An unexpected error occurred. Please try again later.', 'danger')
     
     return render_template('customize_leads.html', form=form)

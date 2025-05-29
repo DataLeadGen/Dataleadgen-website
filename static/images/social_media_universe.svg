@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <style>
+    /* Base styles */
+    .universe-bg {
+      fill: url(#space-gradient);
+    }
+    
+    /* Icon styles */
+    .social-icon {
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+    .icon-circle {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.2);
+      stroke-width: 1;
+      stroke-dasharray: 3, 3;
+    }
+    
+    /* Animation styles */
+    .rotate-slow {
+      animation: rotate 60s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .rotate-medium {
+      animation: rotate 40s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .rotate-fast {
+      animation: rotate 20s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .rotate-reverse {
+      animation: rotate-reverse 30s linear infinite;
+      transform-origin: 400px 300px;
+    }
+    .pulse {
+      animation: pulse 3s ease-in-out infinite;
+    }
+    .float {
+      animation: float 5s ease-in-out infinite;
+    }
+    .glow {
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    /* Connection lines */
+    .connection {
+      stroke: rgba(255, 255, 255, 0.3);
+      stroke-width: 1;
+      stroke-dasharray: 5, 5;
+      animation: dash 20s linear infinite;
+    }
+    
+    /* Keyframes */
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes rotate-reverse {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes glow {
+      0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7)); }
+      50% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)); }
+    }
+    @keyframes dash {
+      to { stroke-dashoffset: 100; }
+    }
+  </style>
+  
+  <!-- Definitions -->
+  <defs>
+    <!-- Space gradient -->
+    <linearGradient id="space-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2027" />
+      <stop offset="50%" stop-color="#203A43" />
+      <stop offset="100%" stop-color="#2C5364" />
+    </linearGradient>
+    
+    <!-- Center glow -->
+    <radialGradient id="center-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.8)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0)" />
+    </radialGradient>
+    
+    <!-- Social media icons -->
+    <!-- Facebook -->
+    <symbol id="facebook" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#3b5998" />
+      <path d="M26.8,38V26.6h3.8l0.6-4.4h-4.4v-2.8c0-1.3,0.4-2.2,2.2-2.2h2.4v-4c-0.4-0.1-1.9-0.2-3.6-0.2
+        c-3.6,0-6,2.2-6,6.2v3h-4v4.4h4V38H26.8z" fill="white" />
+    </symbol>
+    
+    <!-- Twitter -->
+    <symbol id="twitter" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#1DA1F2" />
+      <path d="M38,16.7c-1.1,0.5-2.3,0.8-3.5,1c1.3-0.8,2.2-2,2.7-3.4c-1.2,0.7-2.5,1.2-3.9,1.5c-1.1-1.2-2.7-1.9-4.5-1.9
+        c-3.4,0-6.2,2.8-6.2,6.2c0,0.5,0.1,1,0.2,1.4c-5.1-0.3-9.7-2.7-12.7-6.4c-0.5,0.9-0.8,2-0.8,3.1c0,2.1,1.1,4,2.7,5.1
+        c-1,0-2-0.3-2.8-0.8v0.1c0,3,2.1,5.5,4.9,6c-0.5,0.1-1.1,0.2-1.6,0.2c-0.4,0-0.8,0-1.2-0.1c0.8,2.4,3.1,4.2,5.7,4.2
+        c-2.1,1.6-4.7,2.6-7.6,2.6c-0.5,0-1,0-1.5-0.1c2.7,1.7,5.9,2.7,9.4,2.7c11.3,0,17.4-9.3,17.4-17.4c0-0.3,0-0.5,0-0.8
+        C36.2,19,37.2,17.9,38,16.7z" fill="white" />
+    </symbol>
+    
+    <!-- Instagram -->
+    <symbol id="instagram" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="url(#instagram-gradient)" />
+      <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#FFDC80" />
+        <stop offset="10%" stop-color="#FCAF45" />
+        <stop offset="50%" stop-color="#F77737" />
+        <stop offset="75%" stop-color="#F56040" />
+        <stop offset="85%" stop-color="#FD1D1D" />
+        <stop offset="100%" stop-color="#833AB4" />
+      </linearGradient>
+      <path d="M25,15c3.3,0,3.7,0,5,0.1c1.2,0.1,1.8,0.3,2.2,0.4c0.6,0.2,1,0.5,1.4,0.9c0.4,0.4,0.7,0.8,0.9,1.4
+        c0.1,0.4,0.4,1.1,0.4,2.2c0.1,1.3,0.1,1.7,0.1,5s0,3.7-0.1,5c-0.1,1.2-0.3,1.8-0.4,2.2c-0.2,0.6-0.5,1-0.9,1.4
+        c-0.4,0.4-0.8,0.7-1.4,0.9c-0.4,0.1-1.1,0.4-2.2,0.4c-1.3,0.1-1.7,0.1-5,0.1s-3.7,0-5-0.1c-1.2-0.1-1.8-0.3-2.2-0.4
+        c-0.6-0.2-1-0.5-1.4-0.9c-0.4-0.4-0.7-0.8-0.9-1.4c-0.1-0.4-0.4-1.1-0.4-2.2c-0.1-1.3-0.1-1.7-0.1-5s0-3.7,0.1-5
+        c0.1-1.2,0.3-1.8,0.4-2.2c0.2-0.6,0.5-1,0.9-1.4c0.4-0.4,0.8-0.7,1.4-0.9c0.4-0.1,1.1-0.4,2.2-0.4C21.3,15,21.7,15,25,15 M25,12
+        c-3.4,0-3.8,0-5.1,0.1c-1.3,0.1-2.2,0.3-3,0.6c-0.8,0.3-1.5,0.7-2.2,1.4c-0.7,0.7-1.1,1.4-1.4,2.2c-0.3,0.8-0.5,1.7-0.6,3
+        C12.1,21.2,12,21.6,12,25c0,3.4,0,3.8,0.1,5.1c0.1,1.3,0.3,2.2,0.6,3c0.3,0.8,0.7,1.5,1.4,2.2c0.7,0.7,1.4,1.1,2.2,1.4
+        c0.8,0.3,1.7,0.5,3,0.6c1.3,0.1,1.7,0.1,5.1,0.1c3.4,0,3.8,0,5.1-0.1c1.3-0.1,2.2-0.3,3-0.6c0.8-0.3,1.5-0.7,2.2-1.4
+        c0.7-0.7,1.1-1.4,1.4-2.2c0.3-0.8,0.5-1.7,0.6-3c0.1-1.3,0.1-1.7,0.1-5.1c0-3.4,0-3.8-0.1-5.1c-0.1-1.3-0.3-2.2-0.6-3
+        c-0.3-0.8-0.7-1.5-1.4-2.2c-0.7-0.7-1.4-1.1-2.2-1.4c-0.8-0.3-1.7-0.5-3-0.6C28.8,12,28.4,12,25,12L25,12z" fill="white" />
+      <path d="M25,18c-3.9,0-7,3.1-7,7s3.1,7,7,7s7-3.1,7-7S28.9,18,25,18z M25,29c-2.2,0-4-1.8-4-4s1.8-4,4-4s4,1.8,4,4
+        S27.2,29,25,29z" fill="white" />
+      <circle cx="32.5" cy="17.5" r="1.5" fill="white" />
+    </symbol>
+    
+    <!-- LinkedIn -->
+    <symbol id="linkedin" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#0077B5" />
+      <path d="M17,34h-4V21h4V34z M15,19.5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S16.4,19.5,15,19.5z M38,34h-4v-6.3
+        c0-1.5,0-3.4-2.1-3.4c-2.1,0-2.4,1.6-2.4,3.3V34h-4V21h3.8v1.7h0.1c0.5-1,1.8-2.1,3.8-2.1c4.1,0,4.8,2.7,4.8,6.1V34z" fill="white" />
+    </symbol>
+    
+    <!-- YouTube -->
+    <symbol id="youtube" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#FF0000" />
+      <path d="M36.9,18.9c-0.3-1.3-1.3-2.3-2.6-2.6C32,15.7,25,15.7,25,15.7s-7,0-9.3,0.6c-1.3,0.3-2.3,1.3-2.6,2.6
+        C12.5,21.2,12.5,25,12.5,25s0,3.8,0.6,6.1c0.3,1.3,1.3,2.3,2.6,2.6c2.3,0.6,9.3,0.6,9.3,0.6s7,0,9.3-0.6c1.3-0.3,2.3-1.3,2.6-2.6
+        c0.6-2.3,0.6-6.1,0.6-6.1S37.5,21.2,36.9,18.9z M22,28.9V21.1L29.5,25L22,28.9z" fill="white" />
+    </symbol>
+    
+    <!-- Pinterest -->
+    <symbol id="pinterest" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#E60023" />
+      <path d="M25,12c-7.2,0-13,5.8-13,13c0,5.5,3.4,10.2,8.3,12.1c-0.1-1-0.2-2.6,0-3.7c0.2-1,1.5-6.5,1.5-6.5s-0.4-0.8-0.4-1.9
+        c0-1.8,1-3.1,2.3-3.1c1.1,0,1.6,0.8,1.6,1.8c0,1.1-0.7,2.7-1.1,4.2c-0.3,1.3,0.6,2.3,1.9,2.3c2.3,0,4-2.4,4-5.9
+        c0-2.8-2-4.8-4.9-4.8c-3.3,0-5.3,2.5-5.3,5.1c0,1,0.4,2.1,0.9,2.7c0.1,0.1,0.1,0.2,0.1,0.3c-0.1,0.4-0.3,1.3-0.3,1.5
+        c-0.1,0.2-0.2,0.3-0.4,0.2c-1.5-0.7-2.4-2.9-2.4-4.6c0-3.8,2.8-7.3,7.9-7.3c4.2,0,7.4,3,7.4,6.9c0,4.1-2.6,7.5-6.2,7.5
+        c-1.2,0-2.4-0.6-2.8-1.4c0,0-0.6,2.3-0.7,2.9c-0.3,1-1,2.3-1.5,3c1.1,0.3,2.3,0.5,3.6,0.5c7.2,0,13-5.8,13-13
+        C38,17.8,32.2,12,25,12z" fill="white" />
+    </symbol>
+    
+    <!-- TikTok -->
+    <symbol id="tiktok" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#000000" />
+      <path d="M33,17.1c-1.1-0.1-2.1-0.5-2.9-1.2c-0.8-0.7-1.4-1.7-1.6-2.7h-4v13.7c0,1.9-1.5,3.4-3.4,3.4c-1.9,0-3.4-1.5-3.4-3.4
+        c0-1.9,1.5-3.4,3.4-3.4c0.4,0,0.7,0.1,1,0.2v-4.1c-0.3,0-0.7-0.1-1-0.1c-4.1,0-7.5,3.4-7.5,7.5c0,4.1,3.4,7.5,7.5,7.5
+        c4.1,0,7.5-3.4,7.5-7.5v-7.5c1.3,0.9,2.8,1.4,4.4,1.4V17.1z" fill="white" />
+    </symbol>
+    
+    <!-- Snapchat -->
+    <symbol id="snapchat" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#FFFC00" />
+      <path d="M25.2,15c0.9,0,3.7,0.2,5.1,3c0.5,1,0.4,2.7,0.3,4.1v0.6c0,0,0.1,0,0.2,0c0.3,0,0.7-0.1,1.1-0.3
+        c0.2-0.1,0.4-0.1,0.6-0.1c0.5,0,1,0.2,1.3,0.6c0.4,0.5,0.4,1.2,0.2,1.8c-0.1,0.5-0.5,0.9-0.9,1.2c-0.2,0.1-0.4,0.2-0.6,0.3
+        c-0.2,0.1-0.5,0.2-0.6,0.3c-0.3,0.2-0.3,0.4-0.3,0.5c0,0.1,0.1,0.2,0.2,0.3c0.1,0.1,0.2,0.1,0.3,0.2c0.1,0,0.2,0.1,0.3,0.1
+        c0.2,0.1,0.4,0.2,0.5,0.3c0.2,0.2,0.2,0.4,0.2,0.6c0,0.3-0.2,0.6-0.5,0.8c-0.2,0.1-0.4,0.1-0.6,0.1c-0.2,0-0.4,0-0.6,0
+        c-0.3,0-0.6,0-0.8,0.1c-0.3,0.1-0.5,0.5-0.8,1c-0.4,0.8-1.1,1.9-2.3,2.7c-1,0.6-2,0.9-3,1c-0.1,0-0.2,0-0.3,0h-0.6
+        c-0.1,0-0.2,0-0.3,0c-1,0-2-0.3-3-1c-1.2-0.8-1.9-1.9-2.3-2.7c-0.3-0.5-0.5-0.9-0.8-1c-0.2-0.1-0.5-0.1-0.8-0.1
+        c-0.2,0-0.4,0-0.6,0c-0.2,0-0.4,0-0.6-0.1c-0.3-0.2-0.5-0.5-0.5-0.8c0-0.2,0.1-0.5,0.2-0.6c0.1-0.1,0.3-0.2,0.5-0.3
+        c0.1,0,0.2-0.1,0.3-0.1c0.1,0,0.2-0.1,0.3-0.2c0.1-0.1,0.2-0.2,0.2-0.3c0-0.1,0-0.3-0.3-0.5c-0.1-0.1-0.3-0.2-0.6-0.3
+        c-0.2-0.1-0.4-0.2-0.6-0.3c-0.4-0.3-0.8-0.7-0.9-1.2c-0.1-0.6-0.1-1.3,0.2-1.8c0.3-0.4,0.8-0.6,1.3-0.6c0.2,0,0.4,0,0.6,0.1
+        c0.4,0.2,0.8,0.3,1.1,0.3c0.1,0,0.2,0,0.2,0v-0.6c-0.1-1.4-0.2-3.1,0.3-4.1c1.4-2.8,4.2-3,5.1-3H25.2z" fill="#020202" />
+    </symbol>
+    
+    <!-- WhatsApp -->
+    <symbol id="whatsapp" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="23" fill="#25D366" />
+      <path d="M25,13c-6.6,0-12,5.4-12,12c0,2.2,0.6,4.3,1.7,6.1l-1.8,5.4l5.6-1.8c1.8,1,3.8,1.5,5.8,1.5c6.6,0,12-5.4,12-12
+        S31.6,13,25,13z M30.5,29.2c-0.3,0.8-1.7,1.5-2.3,1.6c-0.6,0.1-1.1,0.1-1.8-0.1c-0.5-0.1-1.2-0.3-2-0.7c-3.5-1.5-5.8-5-6-5.2
+        c-0.2-0.2-1.4-1.9-1.4-3.6c0-1.7,0.9-2.6,1.2-2.9c0.3-0.3,0.7-0.4,0.9-0.4c0.2,0,0.5,0,0.7,0c0.2,0,0.5-0.1,0.8,0.6
+        c0.3,0.7,1,2.5,1.1,2.7c0.1,0.2,0.1,0.4,0,0.7c-0.1,0.2-0.2,0.4-0.4,0.6c-0.2,0.2-0.4,0.5-0.6,0.7c-0.2,0.2-0.4,0.4-0.2,0.8
+        c0.2,0.4,0.9,1.7,2,2.8c1.4,1.4,2.5,1.8,2.9,2c0.4,0.2,0.6,0.2,0.8-0.1c0.2-0.3,0.9-1.1,1.1-1.4c0.2-0.4,0.5-0.3,0.8-0.2
+        c0.3,0.1,2.1,1,2.4,1.2c0.3,0.2,0.6,0.3,0.7,0.4C30.8,27.8,30.8,28.4,30.5,29.2z" fill="white" />
+    </symbol>
+  </defs>
+  
+  <!-- Background -->
+  <rect class="universe-bg" width="100%" height="100%" />
+  
+  <!-- Stars -->
+  <g>
+    <circle class="pulse" cx="120" cy="100" r="1.5" fill="white" opacity="0.8" />
+    <circle class="pulse" cx="220" cy="150" r="2" fill="white" opacity="0.7" style="animation-delay: 0.5s" />
+    <circle class="pulse" cx="320" cy="80" r="1.5" fill="white" opacity="0.9" style="animation-delay: 1s" />
+    <circle class="pulse" cx="420" cy="120" r="2" fill="white" opacity="0.8" style="animation-delay: 1.5s" />
+    <circle class="pulse" cx="520" cy="90" r="1.5" fill="white" opacity="0.7" style="animation-delay: 2s" />
+    <circle class="pulse" cx="620" cy="180" r="2" fill="white" opacity="0.9" style="animation-delay: 2.5s" />
+    <circle class="pulse" cx="720" cy="120" r="1.5" fill="white" opacity="0.8" style="animation-delay: 3s" />
+    <circle class="pulse" cx="150" cy="200" r="2" fill="white" opacity="0.7" style="animation-delay: 0.2s" />
+    <circle class="pulse" cx="250" cy="250" r="1.5" fill="white" opacity="0.9" style="animation-delay: 0.7s" />
+    <circle class="pulse" cx="350" cy="220" r="2" fill="white" opacity="0.8" style="animation-delay: 1.2s" />
+    <circle class="pulse" cx="450" cy="180" r="1.5" fill="white" opacity="0.7" style="animation-delay: 1.7s" />
+    <circle class="pulse" cx="550" cy="230" r="2" fill="white" opacity="0.9" style="animation-delay: 2.2s" />
+    <circle class="pulse" cx="650" cy="270" r="1.5" fill="white" opacity="0.8" style="animation-delay: 2.7s" />
+    <circle class="pulse" cx="120" cy="320" r="2" fill="white" opacity="0.7" style="animation-delay: 0.3s" />
+    <circle class="pulse" cx="220" cy="350" r="1.5" fill="white" opacity="0.9" style="animation-delay: 0.8s" />
+    <circle class="pulse" cx="320" cy="380" r="2" fill="white" opacity="0.8" style="animation-delay: 1.3s" />
+    <circle class="pulse" cx="420" cy="420" r="1.5" fill="white" opacity="0.7" style="animation-delay: 1.8s" />
+    <circle class="pulse" cx="520" cy="370" r="2" fill="white" opacity="0.9" style="animation-delay: 2.3s" />
+    <circle class="pulse" cx="620" cy="330" r="1.5" fill="white" opacity="0.8" style="animation-delay: 2.8s" />
+    <circle class="pulse" cx="720" cy="390" r="2" fill="white" opacity="0.7" style="animation-delay: 3.3s" />
+    <circle class="pulse" cx="180" cy="450" r="1.5" fill="white" opacity="0.9" style="animation-delay: 0.4s" />
+    <circle class="pulse" cx="280" cy="480" r="2" fill="white" opacity="0.8" style="animation-delay: 0.9s" />
+    <circle class="pulse" cx="380" cy="520" r="1.5" fill="white" opacity="0.7" style="animation-delay: 1.4s" />
+    <circle class="pulse" cx="480" cy="470" r="2" fill="white" opacity="0.9" style="animation-delay: 1.9s" />
+    <circle class="pulse" cx="580" cy="430" r="1.5" fill="white" opacity="0.8" style="animation-delay: 2.4s" />
+    <circle class="pulse" cx="680" cy="490" r="2" fill="white" opacity="0.7" style="animation-delay: 2.9s" />
+  </g>
+  
+  <!-- Center glow -->
+  <circle cx="400" cy="300" r="100" fill="url(#center-glow)" class="pulse" />
+  
+  <!-- Orbits -->
+  <circle class="icon-circle rotate-slow" cx="400" cy="300" r="250" />
+  <circle class="icon-circle rotate-medium" cx="400" cy="300" r="180" />
+  <circle class="icon-circle rotate-fast" cx="400" cy="300" r="120" />
+  
+  <!-- Connection lines -->
+  <g>
+    <line class="connection" x1="400" y1="300" x2="400" y2="50" />
+    <line class="connection" x1="400" y1="300" x2="650" y2="300" />
+    <line class="connection" x1="400" y1="300" x2="400" y2="550" />
+    <line class="connection" x1="400" y1="300" x2="150" y2="300" />
+    <line class="connection" x1="400" y1="300" x2="580" y2="150" />
+    <line class="connection" x1="400" y1="300" x2="580" y2="450" />
+    <line class="connection" x1="400" y1="300" x2="220" y2="450" />
+    <line class="connection" x1="400" y1="300" x2="220" y2="150" />
+  </g>
+  
+  <!-- Social Media Icons - Outer Orbit -->
+  <g class="rotate-slow">
+    <use xlink:href="#facebook" class="social-icon glow" x="375" y="25" width="50" height="50" />
+    <use xlink:href="#twitter" class="social-icon glow" x="625" y="275" width="50" height="50" />
+    <use xlink:href="#youtube" class="social-icon glow" x="375" y="525" width="50" height="50" />
+    <use xlink:href="#linkedin" class="social-icon glow" x="125" y="275" width="50" height="50" />
+  </g>
+  
+  <!-- Social Media Icons - Middle Orbit -->
+  <g class="rotate-medium">
+    <use xlink:href="#instagram" class="social-icon glow" x="555" y="125" width="50" height="50" />
+    <use xlink:href="#pinterest" class="social-icon glow" x="555" y="425" width="50" height="50" />
+    <use xlink:href="#snapchat" class="social-icon glow" x="195" y="425" width="50" height="50" />
+    <use xlink:href="#whatsapp" class="social-icon glow" x="195" y="125" width="50" height="50" />
+  </g>
+  
+  <!-- Social Media Icons - Inner Orbit -->
+  <g class="rotate-reverse">
+    <use xlink:href="#tiktok" class="social-icon glow" x="375" y="180" width="50" height="50" />
+    <use xlink:href="#facebook" class="social-icon glow" x="520" y="300" width="50" height="50" />
+    <use xlink:href="#instagram" class="social-icon glow" x="375" y="420" width="50" height="50" />
+    <use xlink:href="#twitter" class="social-icon glow" x="230" y="300" width="50" height="50" />
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" class="float">
+    Social Media Universe
+  </text>
+</svg>

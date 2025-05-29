@@ -95,9 +95,9 @@
             {% endif %}
         </div>
         <div class="field">
-            <span class="label">Distribution Type:</span> 
-            {% if distribution_type %}
-                {{ distribution_type }}
+            <span class="label">Leads Per Company:</span> 
+            {% if leads_per_company %}
+                {{ leads_per_company }}
             {% else %}
                 <span class="empty-field">Not specified</span>
             {% endif %}
@@ -113,14 +113,12 @@
             </div>
         </div>
         <div class="field">
-            <span class="label">Any Other Preferences:</span>
-            <div class="message">
-                {% if additional_preferences %}
-                    {{ additional_preferences }}
-                {% else %}
-                    <span class="empty-field">Not specified</span>
-                {% endif %}
-            </div>
+            <span class="label">Sample File:</span>
+            {% if has_attachment %}
+                <span style="color: green; font-weight: bold;">✓ File attached</span>
+            {% else %}
+                <span class="empty-field">No file attached</span>
+            {% endif %}
         </div>
     </div>
     <div class="footer">
