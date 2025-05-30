@@ -67,9 +67,21 @@ class CustomizeLeadsForm(FlaskForm):
         Optional()
     ], description="Enter industries or company types (e.g., Tech, SaaS, Marketing)")
     
-    # Employee Count Range - now using min and max fields
-    min_employee_count = IntegerField('Minimum Employee Count', validators=[Optional()])
-    max_employee_count = IntegerField('Maximum Employee Count', validators=[Optional()])
+    # Employee Count Range - using dropdown and custom input
+    employee_count_range = SelectField('Employee Count Range', choices=[
+        ('', 'Select a range'),
+        ('1-10', '1-10 employees'),
+        ('11-50', '11-50 employees'),
+        ('51-200', '51-200 employees'),
+        ('201-500', '201-500 employees'),
+        ('501-1000', '501-1000 employees'),
+        ('1001-5000', '1001-5000 employees'),
+        ('5001-10000', '5001-10000 employees'),
+        ('10001+', '10001+ employees'),
+        ('custom', 'Custom range')
+    ], validators=[Optional()])
+    custom_employee_count = StringField('Custom Employee Count Range', validators=[Optional()],
+                                      description="Enter a custom employee count range (e.g., 100-300)")
     
     # Target Title field (can be multiple)
     target_titles = StringField('Target Titles', validators=[

@@ -21,39 +21,16 @@
     --input-bg: #ffffff;
     --input-border: #ced4da;
     
-    /* Transition for theme switching */
-    --theme-transition: all 0.3s ease-in-out;
+    /* No theme switching */
 }
 
-/* Dark Theme Variables */
-html.dark-mode {
-    --primary-color: #4287f5;
-    --secondary-color: #8c98a8;
-    --accent-color: #ff6b6b;
-    --light-color: #282c34;
-    --dark-color: #e9ecef;
-    --light-blue: #233549;
-    --gray-color: #a5a8ad;
-    
-    /* Base Colors - Dark Mode */
-    --bg-color: #121212;
-    --text-color: #e9ecef;
-    --card-bg: #1e1e1e;
-    --border-color: #343a40;
-    --navbar-bg: #1e1e1e;
-    --footer-bg: #1e1e1e;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --table-stripe: rgba(255, 255, 255, 0.03);
-    --input-bg: #2c2c2c;
-    --input-border: #495057;
-}
+/* Website uses light theme only */
 
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
     line-height: 1.6;
     background-color: var(--bg-color);
-    transition: var(--theme-transition);
 }
 
 /* Typography */
@@ -269,26 +246,180 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-card {
     background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 2rem;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
     margin-bottom: 2rem;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    transition: var(--transition);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     height: 100%;
     color: var(--text-color);
     border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.service-icon {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+.service-card:hover:after {
+    transform: scaleX(1);
+}
+
+/* Modern Service Icons */
+.service-icon-modern {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-icon-modern:before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.service-icon-modern i {
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-modern {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 86, 179, 0.3);
+}
+
+.service-card:hover .service-icon-modern:before {
+    inset: -10px;
+    opacity: 0.2;
+}
+
+.service-card:hover .service-icon-modern i {
+    transform: scale(1.1);
+}
+
+.service-content {
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.service-tag {
     display: inline-block;
+    background-color: var(--light-blue);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-tag {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Dark mode styles for service icons */
+html.dark-mode .service-icon-modern {
+    background: linear-gradient(135deg, #2c3e50, #4287f5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+html.dark-mode .service-icon-modern:before {
+    background: linear-gradient(135deg, #2c3e50, #4287f5);
+}
+
+html.dark-mode .service-tag {
+    background-color: #233549;
+    color: #4287f5;
+}
+
+html.dark-mode .service-card:hover .service-tag {
+    background-color: #4287f5;
+    color: white;
+}
+
+/* Enhanced dark mode styles for service cards to fix text visibility */
+html.dark-mode .service-card {
+    color: #e9ecef;
+    background-color: #1e1e1e;
+    border-color: #343a40;
+}
+
+html.dark-mode .service-content h3 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+html.dark-mode .service-content p {
+    color: #d1d5db;
+    opacity: 1;
+}
+
+/* Service button styling */
+.service-btn {
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.service-btn i {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.service-btn:hover i {
+    transform: translateX(3px);
+}
+
+.service-card:hover .service-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+html.dark-mode .service-btn:hover {
+    background-color: #4287f5;
+    border-color: #4287f5;
+}
+
+html.dark-mode .service-logo-badge {
+    background: linear-gradient(135deg, #2c3e50, #4287f5);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* About section */

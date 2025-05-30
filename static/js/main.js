@@ -173,26 +173,16 @@ function initHoverEffects() {
 // Function to handle navbar scroll behavior
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-    const htmlElement = document.documentElement;
     
     if (navbar) {
         window.addEventListener('scroll', function() {
             if (window.scrollY > 50) {
                 navbar.classList.add('shadow-sm');
-                
-                // Handle different background colors for dark/light mode
-                if (htmlElement.classList.contains('dark-mode')) {
-                    navbar.classList.add('bg-dark');
-                    navbar.classList.remove('bg-white');
-                } else {
-                    navbar.classList.add('bg-white');
-                    navbar.classList.remove('bg-dark');
-                }
-                
+                navbar.classList.add('bg-white');
                 navbar.classList.remove('navbar-dark');
                 navbar.classList.add('navbar-light');
             } else {
-                navbar.classList.remove('bg-white', 'bg-dark', 'shadow-sm');
+                navbar.classList.remove('bg-white', 'shadow-sm');
                 if (navbar.classList.contains('navbar-on-dark')) {
                     navbar.classList.add('navbar-dark');
                     navbar.classList.remove('navbar-light');
@@ -245,41 +235,12 @@ function scrollToTop() {
     });
 }
 
-// Function to initialize theme toggle (dark/light mode)
+// Function to initialize theme (light mode only)
 function initThemeToggle() {
-    const themeToggleBtn = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     
-    // Check for saved theme preference or use default (light mode)
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        htmlElement.classList.add('dark-mode');
-        htmlElement.classList.remove('light-mode');
-    } else {
-        htmlElement.classList.add('light-mode');
-        htmlElement.classList.remove('dark-mode');
-    }
-
-    // Toggle theme on button click
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', function() {
-            if (htmlElement.classList.contains('dark-mode')) {
-                // Switch to light mode
-                htmlElement.classList.remove('dark-mode');
-                htmlElement.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
-            } else {
-                // Switch to dark mode
-                htmlElement.classList.remove('light-mode');
-                htmlElement.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            }
-            
-            // Add a subtle animation to indicate the theme change
-            themeToggleBtn.classList.add('pulse');
-            setTimeout(() => {
-                themeToggleBtn.classList.remove('pulse');
-            }, 500);
-        });
-    }
+    // Always use light mode
+    htmlElement.classList.add('light-mode');
+    htmlElement.classList.remove('dark-mode');
+    localStorage.setItem('theme', 'light');
 }

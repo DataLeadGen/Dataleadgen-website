@@ -53,12 +53,53 @@
             {% for service in services %}
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="{{ service.icon }}"></i>
+                    <div class="service-icon-modern">
+                        {% if service.title == 'Data Mining' %}
+                            <i class="fas fa-database"></i>
+                        {% elif service.title == 'Email List Building & Cleaning' %}
+                            <i class="fas fa-envelope"></i>
+                        {% elif service.title == 'Contact List Building' %}
+                            <i class="fas fa-address-book"></i>
+                        {% elif service.title == 'Data Cleansing & Cleaning' %}
+                            <i class="fas fa-broom"></i>
+                        {% elif service.title == 'Data Scraping & Extraction' %}
+                            <i class="fas fa-code"></i>
+                        {% elif service.title == 'Web & Google Maps Scraping' %}
+                            <i class="fas fa-map-marker-alt"></i>
+                        {% elif 'CRM' in service.title %}
+                            <i class="fas fa-cogs"></i>
+                        {% elif service.title == 'Bulk Email Verification' %}
+                            <i class="fas fa-check-double"></i>
+                        {% else %}
+                            <i class="fas fa-cogs"></i>
+                        {% endif %}
                     </div>
-                    <h3>{{ service.title }}</h3>
-                    <p>{{ service.description }}</p>
-                    <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    <div class="service-content">
+                        <h3>{{ service.title }}</h3>
+                        <div class="service-tag">
+                            {% if service.title == 'Data Mining' %}
+                                <span>Data Mining</span>
+                            {% elif service.title == 'Email List Building & Cleaning' %}
+                                <span>Email Lists</span>
+                            {% elif service.title == 'Contact List Building' %}
+                                <span>Contacts</span>
+                            {% elif service.title == 'Data Cleansing & Cleaning' %}
+                                <span>Data Cleaning</span>
+                            {% elif service.title == 'Data Scraping & Extraction' %}
+                                <span>Data Scraping</span>
+                            {% elif service.title == 'Web & Google Maps Scraping' %}
+                                <span>Maps Data</span>
+                            {% elif 'CRM' in service.title %}
+                                <span>CRM Data</span>
+                            {% elif service.title == 'Bulk Email Verification' %}
+                                <span>Email Verify</span>
+                            {% else %}
+                                <span>{{ service.title }}</span>
+                            {% endif %}
+                        </div>
+                        <p>{{ service.description }}</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm service-btn">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
                 </div>
             </div>
             {% endfor %}

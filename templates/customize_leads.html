@@ -5,6 +5,119 @@
 {% block extra_css %}
 <style>
     /* Custom styles for the Customize Leads page */
+    
+    /* Enhanced file upload styles */
+    .custom-file-upload {
+        margin-bottom: 1rem;
+    }
+    
+    .upload-btn-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .btn-upload {
+        position: relative;
+        overflow: hidden;
+        padding: 0.6rem 1.2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-upload:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 86, 179, 0.2);
+    }
+    
+    .file-types .badge {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+    }
+    
+    .file-types .badge:hover {
+        transform: translateY(-2px);
+    }
+    
+    /* Enhanced leads input styles */
+    .leads-input-group {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .leads-input-group .input-group-text {
+        border: none;
+    }
+    
+    .leads-input-group .btn {
+        border-radius: 0;
+        padding: 0.5rem 0.8rem;
+        transition: all 0.2s ease;
+    }
+    
+    .leads-input-group .btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    /* Dark mode specific enhancements */
+    html.dark-mode .btn-upload {
+        border-color: #4287f5;
+        color: #4287f5;
+    }
+    
+    html.dark-mode .btn-upload:hover {
+        background-color: #4287f5;
+        color: #fff;
+    }
+    
+    html.dark-mode .file-types .badge {
+        background-color: #2c3e50 !important;
+    }
+    
+    html.dark-mode #file-chosen.text-success {
+        color: #4cd964 !important;
+    }
+    
+    html.dark-mode .customize-leads-section {
+        background-color: var(--light-color);
+        background-image: linear-gradient(135deg, #233549 0%, rgba(44, 62, 80, 0.1) 100%);
+    }
+    
+    html.dark-mode .form-card {
+        background-color: #1e1e1e;
+        border-color: #343a40;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    html.dark-mode .form-header h1 {
+        color: #4287f5;
+    }
+    
+    html.dark-mode .form-header p {
+        color: #b8c4d0;
+    }
+    
+    html.dark-mode .alert-success {
+        background-color: #1e3a2f;
+        color: #d1f7e0;
+        border-color: #2d5f4b;
+    }
+    
+    html.dark-mode .radio-label {
+        border-color: #343a40;
+        color: #e9ecef;
+    }
+    
+    html.dark-mode .radio-label:hover {
+        background-color: rgba(66, 135, 245, 0.1);
+        border-color: #4287f5;
+    }
+    
+    html.dark-mode input[type="radio"]:checked + .radio-label {
+        background-color: rgba(66, 135, 245, 0.2);
+        border-color: #4287f5;
+    }
     .customize-leads-section {
         padding: 5rem 0;
         background-color: var(--light-color);
@@ -313,35 +426,54 @@
                             <label class="form-label">
                                 <i class="fas fa-users form-icon"></i> Employee Count Range <span class="text-muted">(optional)</span>
                             </label>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text">Min</span>
-                                        {{ form.min_employee_count(class="form-control", placeholder="Minimum", min=1) }}
+                            <div class="mb-3">
+                                {{ form.employee_count_range(class="form-control", id="employeeCountRange") }}
+                                <small class="form-text">Select the employee count range for target companies</small>
+                                {% if form.employee_count_range.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.employee_count_range.errors %}
+                                            {{ error }}
+                                        {% endfor %}
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text">Max</span>
-                                        {{ form.max_employee_count(class="form-control", placeholder="Maximum", min=1) }}
-                                    </div>
-                                </div>
+                                {% endif %}
                             </div>
-                            <small class="form-text">Enter the minimum and maximum number of employees for target companies</small>
-                            {% if form.min_employee_count.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {% for error in form.min_employee_count.errors %}
-                                        {{ error }}
-                                    {% endfor %}
+                            
+                            <div id="customRangeInput" class="mt-3" style="display: none;">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                                    {{ form.custom_employee_count(class="form-control", placeholder="Enter custom range (e.g., 100-300)") }}
                                 </div>
-                            {% endif %}
-                            {% if form.max_employee_count.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {% for error in form.max_employee_count.errors %}
-                                        {{ error }}
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
+                                <small class="form-text">{{ form.custom_employee_count.description }}</small>
+                                {% if form.custom_employee_count.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.custom_employee_count.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <script>
+                                // Show/hide custom range input based on dropdown selection
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const rangeSelect = document.getElementById('employeeCountRange');
+                                    const customInput = document.getElementById('customRangeInput');
+                                    
+                                    // Initial check
+                                    if (rangeSelect.value === 'custom') {
+                                        customInput.style.display = 'block';
+                                    }
+                                    
+                                    // Add change event listener
+                                    rangeSelect.addEventListener('change', function() {
+                                        if (this.value === 'custom') {
+                                            customInput.style.display = 'block';
+                                        } else {
+                                            customInput.style.display = 'none';
+                                        }
+                                    });
+                                });
+                            </script>
                         </div>
                         
                         <div class="form-group">
@@ -363,11 +495,48 @@
                             <label for="{{ form.leads_per_company.id }}" class="form-label">
                                 <i class="fas fa-users form-icon"></i> {{ form.leads_per_company.label }} <span class="text-muted">(optional)</span>
                             </label>
-                            <div class="input-group">
+                            <div class="input-group leads-input-group">
+                                <span class="input-group-text bg-primary text-white"><i class="fas fa-users"></i></span>
                                 {{ form.leads_per_company(class="form-control", placeholder="Number of leads per company", min=1, value=1) }}
-                                <span class="input-group-text">leads</span>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-primary" id="decreaseLeads"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-outline-primary" id="increaseLeads"><i class="fas fa-plus"></i></button>
+                                </div>
                             </div>
                             <small class="form-text">Specify how many contacts you need from each company</small>
+                            
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const leadsInput = document.getElementById('{{ form.leads_per_company.id }}');
+                                    const decreaseBtn = document.getElementById('decreaseLeads');
+                                    const increaseBtn = document.getElementById('increaseLeads');
+                                    
+                                    // Set minimum value
+                                    const minValue = 1;
+                                    
+                                    // Decrease button click handler
+                                    decreaseBtn.addEventListener('click', function() {
+                                        let currentValue = parseInt(leadsInput.value) || 1;
+                                        if (currentValue > minValue) {
+                                            leadsInput.value = currentValue - 1;
+                                        }
+                                    });
+                                    
+                                    // Increase button click handler
+                                    increaseBtn.addEventListener('click', function() {
+                                        let currentValue = parseInt(leadsInput.value) || 0;
+                                        leadsInput.value = currentValue + 1;
+                                    });
+                                    
+                                    // Ensure the input always has a valid number
+                                    leadsInput.addEventListener('change', function() {
+                                        let value = parseInt(this.value) || 0;
+                                        if (value < minValue) {
+                                            this.value = minValue;
+                                        }
+                                    });
+                                });
+                            </script>
                             {% if form.leads_per_company.errors %}
                                 <div class="invalid-feedback d-block">
                                     {% for error in form.leads_per_company.errors %}
@@ -396,17 +565,41 @@
                             <label for="{{ form.sample_file.id }}" class="form-label">
                                 <i class="fas fa-file-upload form-icon"></i> {{ form.sample_file.label }} <span class="text-muted">(optional)</span>
                             </label>
-                            <div class="input-group">
-                                {{ form.sample_file(class="form-control") }}
-                                <label class="input-group-text" for="{{ form.sample_file.id }}">Upload</label>
+                            <div class="custom-file-upload">
+                                {{ form.sample_file(class="form-control", id="customFileUpload", style="display: none;") }}
+                                <div class="upload-btn-wrapper">
+                                    <button type="button" class="btn btn-outline-primary btn-upload" onclick="document.getElementById('customFileUpload').click()">
+                                        <i class="fas fa-cloud-upload-alt me-2"></i> Choose File
+                                    </button>
+                                    <span id="file-chosen" class="ms-3 text-muted">No file selected</span>
+                                </div>
                             </div>
                             <small class="form-text">{{ form.sample_file.description }}</small>
-                            <div class="mt-2">
-                                <span class="badge bg-secondary me-1">Excel</span>
-                                <span class="badge bg-secondary me-1">CSV</span>
-                                <span class="badge bg-secondary me-1">PDF</span>
-                                <span class="badge bg-secondary me-1">Image</span>
+                            <div class="mt-2 file-types">
+                                <span class="badge bg-secondary me-1"><i class="fas fa-file-excel me-1"></i>Excel</span>
+                                <span class="badge bg-secondary me-1"><i class="fas fa-file-csv me-1"></i>CSV</span>
+                                <span class="badge bg-secondary me-1"><i class="fas fa-file-pdf me-1"></i>PDF</span>
+                                <span class="badge bg-secondary me-1"><i class="fas fa-file-image me-1"></i>Image</span>
                             </div>
+                            
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const actualFileInput = document.getElementById('customFileUpload');
+                                    const fileChosen = document.getElementById('file-chosen');
+                                    
+                                    actualFileInput.addEventListener('change', function() {
+                                        if (this.files.length > 0) {
+                                            fileChosen.textContent = this.files[0].name;
+                                            fileChosen.classList.remove('text-muted');
+                                            fileChosen.classList.add('text-success');
+                                        } else {
+                                            fileChosen.textContent = 'No file selected';
+                                            fileChosen.classList.add('text-muted');
+                                            fileChosen.classList.remove('text-success');
+                                        }
+                                    });
+                                });
+                            </script>
                             {% if form.sample_file.errors %}
                                 <div class="invalid-feedback d-block">
                                     {% for error in form.sample_file.errors %}
@@ -416,7 +609,49 @@
                             {% endif %}
                         </div>
                         
-                        {{ form.submit(class="submit-btn") }}
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane me-2"></i> {{ form.submit.label.text }}
+                            <span class="submit-btn-highlight"></span>
+                        </button>
+                        <style>
+                            .submit-btn {
+                                display: block;
+                                width: 100%;
+                                padding: 1rem;
+                                border-radius: 8px;
+                                background-color: var(--primary-color);
+                                color: white;
+                                font-weight: 600;
+                                font-size: 1.1rem;
+                                border: none;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                                margin-top: 2rem;
+                                position: relative;
+                                overflow: hidden;
+                                z-index: 1;
+                            }
+                            
+                            .submit-btn-highlight {
+                                position: absolute;
+                                top: 0;
+                                left: -100%;
+                                width: 100%;
+                                height: 100%;
+                                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                                transition: all 0.6s ease;
+                                z-index: -1;
+                            }
+                            
+                            .submit-btn:hover {
+                                transform: translateY(-3px);
+                                box-shadow: 0 10px 20px rgba(0, 86, 179, 0.3);
+                            }
+                            
+                            .submit-btn:hover .submit-btn-highlight {
+                                left: 100%;
+                            }
+                        </style>
                     </form>
                 </div>
             </div>

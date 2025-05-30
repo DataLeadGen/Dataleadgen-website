@@ -184,14 +184,17 @@ def customize_leads():
             subject = f"New Lead Customization Request from {form.name.data}"
             recipient = app.config['MAIL_USERNAME']
             
-            # Format employee count range
+            # Get employee count range
             employee_count_range = ""
-            if form.min_employee_count.data is not None and form.max_employee_count.data is not None:
-                employee_count_range = f"{form.min_employee_count.data}-{form.max_employee_count.data} employees"
-            elif form.min_employee_count.data is not None:
-                employee_count_range = f"{form.min_employee_count.data}+ employees"
-            elif form.max_employee_count.data is not None:
-                employee_count_range = f"Up to {form.max_employee_count.data} employees"
+            if form.employee_count_range.data:
+                if form.employee_count_range.data == 'custom' and form.custom_employee_count.data:
+                    employee_count_range = f"Custom: {form.custom_employee_count.data}"
+                elif form.employee_count_range.data != 'custom':
+                    # Get the label from the choices
+                    for value, label in form.employee_count_range.choices:
+                        if value == form.employee_count_range.data:
+                            employee_count_range = label
+                            break
             
             # Get leads per company
             leads_per_company = f"{form.leads_per_company.data} leads per company" if form.leads_per_company.data is not None else "Not specified"
