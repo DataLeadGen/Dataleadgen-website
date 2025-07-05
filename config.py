@@ -25,9 +25,9 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
     # Gmail credentials - using environment variables for security
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'zakir@dataleadgen.com')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'zbgz macj cors uojv')  # App password for Gmail
-    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'zakir@dataleadgen.com')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'Zakirdataleadgen@gmail.com')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'nbgv jzwz zogy ndgw')  # App password for Gmail
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', 'Zakirdataleadgen@gmail.com')
     MAIL_MAX_EMAILS = None  # No limit on the number of emails
     MAIL_ASCII_ATTACHMENTS = False
     MAIL_DEBUG = True  # Enable debug mode for Flask-Mail
